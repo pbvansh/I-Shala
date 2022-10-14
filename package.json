@@ -1,0 +1,42 @@
+{
+  "name": "intern",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "v1",
+    "axios": "^0.27.2",
+    "jsonwebtoken": "^8.5.1",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-toastify": "8.2.0",
+    "recoil": "^0.7.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.9",
+    "eslint": "8.23.1",
+    "eslint-config-next": "12.3.0",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8"
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "middleware.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vidhi000/I-Shala.git"
+  },
+  "author": "vidhi rana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vidhi000/I-Shala/issues"
+  },
+  "homepage": "https://github.com/vidhi000/I-Shala#readme"
+}
