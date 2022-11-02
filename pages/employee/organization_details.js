@@ -4,24 +4,24 @@ import Link from "next/link";
 import { useRef } from "react";
 import Router, { useRouter } from "next/router";
 import axios from "axios";
-
+import JWT from 'jsonwebtoken'
 const Organization_details = () => {
     const orgnameRef = useRef();
     const orgdetailRef = useRef();
     const urlRef = useRef();
 
-     const orgDetail = (e)=>{
-       e.preventDefault();
-       console.log(orgnameRef.current.value,orgdetailRef.current.value,urlRef.current.value)
-       axios.post("http://localhost:5000/orgdetail/org",{
-        Organization_name : orgnameRef.current.value,
-        Organization_description : orgdetailRef.current.value,
-        website_URL : urlRef.current.value
-       }).then((res)=>{
-          console.log(res.data)
-       })
-       Router.push("/employee/post_internship")
-     }
+    const orgDetail = (e) => {
+        e.preventDefault();
+        const token = JWT.decode(localStorage.getItem('i_shala_token'))
+        axios.put(`http://localhost:5000/company/${token.id}/update`, {
+            Name: orgnameRef.current.value,
+            About_company: orgdetailRef.current.value,
+            // website_URL: urlRef.current.value
+        }).then((res) => {
+            console.log(res.data)
+        })
+        Router.push("/employee/post_internship")
+    }
     return (
         <>
             <div className="min-h-screen max-w-4xl mx-auto relative">
@@ -38,11 +38,11 @@ const Organization_details = () => {
                         <p>Organization Details</p>
                     </div>
                     <Link href="/employee/post_internship">
-                    <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500  text-gray-800">
-                        <DocumentTextIcon className="h-12 w-12 cursor-pointer p-3  text-white bg-gray-400 hover:bg-sky-500 rounded-full" />
-                        <p>Post Internship</p>
-                        
-                    </div>
+                        <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500  text-gray-800">
+                            <DocumentTextIcon className="h-12 w-12 cursor-pointer p-3  text-white bg-gray-400 hover:bg-sky-500 rounded-full" />
+                            <p>Post Internship</p>
+
+                        </div>
                     </Link>
                 </div>
 
@@ -82,10 +82,10 @@ const Organization_details = () => {
 
                 </div>
                 <div className="flex flex-col items-center">
-                <Link href="/post_internship">
-                    <button className="text-white bg-sky-500 hover:bg-sky-600 
+                    <Link href="/post_internship">
+                        <button className="text-white bg-sky-500 hover:bg-sky-600 
                 shadow-lg font-semibold text-lg text-center w-32 border rounded-md mt-4 mb-10 p-2" onClick={orgDetail}>Next</button>
-                </Link>
+                    </Link>
                 </div>
             </div>
 

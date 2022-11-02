@@ -1,7 +1,8 @@
 import { DocumentDuplicateIcon, DocumentTextIcon, UsersIcon, ArrowRightIcon } from "@heroicons/react/outline"
 import axios from "axios";
 import Link from "next/link"
-import { useRef, useState } from "react"
+import { useRef, useState } from "react";
+import JWT from 'jsonwebtoken'
 
 const post_internship = () => {
 
@@ -24,7 +25,9 @@ const post_internship = () => {
 
     const createInternship = (e)=>{
         e.preventDefault();
+        const token = JWT.decode(localStorage.getItem('i_shala_token'))
         axios.post("http://localhost:5000/internship/create",{
+            company_id : token.id,
             Internship_Name : nameRef.current.value,
             Internship_type : typeRef.current.value,
             Location : locationRef.current.value,

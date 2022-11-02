@@ -22,7 +22,7 @@ const Application = ({ app }) => {
                     <p className="text-sky-500 bg-sky-50 font-semibold text-base border border-sky-100 rounded-full w-28 text-center">Applied</p>
                     <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
                 </div>
-                <Link href={`application/view/${app._id}`}>
+                <Link href={`../application/view/${app._id}`}>
                     <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
                 </Link>
             </div>
