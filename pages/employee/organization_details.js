@@ -20,14 +20,14 @@ const Organization_details = () => {
        }).then((res)=>{
           console.log(res.data)
        })
-       Router.push("/post_internship")
+       Router.push("/employee/post_internship")
      }
     return (
         <>
             <div className="min-h-screen max-w-4xl mx-auto relative">
                 <div className="flex space-x-40 justify-center p-20">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
-                        <Link href="/personal_details">
+                        <Link href="/employee/personal_details">
                             <UsersIcon className="h-12 w-12 cursor-pointer p-3 bg-sky-500 text-white rounded-full" />
                         </Link>
                         <p>Personal Details</p>
@@ -37,7 +37,7 @@ const Organization_details = () => {
                         <DocumentDuplicateIcon className="h-12 w-12 cursor-pointer p-3 text-sky-500 border border-2px border-sky-500 bg-white rounded-full" />
                         <p>Organization Details</p>
                     </div>
-                    <Link href="/post_internship">
+                    <Link href="/employee/post_internship">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500  text-gray-800">
                         <DocumentTextIcon className="h-12 w-12 cursor-pointer p-3  text-white bg-gray-400 hover:bg-sky-500 rounded-full" />
                         <p>Post Internship</p>

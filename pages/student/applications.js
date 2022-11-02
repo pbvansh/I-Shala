@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react"
-import Application from "../components/Application";
+import Application from "../../components/Application";
 import JWT from 'jsonwebtoken'
 
 
@@ -18,10 +18,7 @@ const application = () => {
         }).catch((ex) => {
             console.log(ex)
         })
-
-
     }, [])
-
     return (
         <>
             <div className="min-h-screen max-w-screen-xl mx-auto">

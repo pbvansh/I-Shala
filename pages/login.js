@@ -34,15 +34,17 @@ const Login = () =>{
             console.log(res.data);
             if(res.data.isEmp){
                 setIsEmp(true)
+                console.log(res.data.isEmp)
             }else{
                 setIsEmp(false)
+                console.log(res.data.isEmp)
             }
             localStorage.setItem('i_shala_token',res.data.token);
             localStorage.setItem('i_shala_user_email',res.data.email)
             localStorage.setItem('i_shala_user_fname',res.data.Fname)
             localStorage.setItem('i_shala_isAuth',res.data.isAuth)
             toast("Login Successfull",{autoClose : 1500,position : "bottom-right"});
-            route.push('/applications')
+            route.push('/')
         }).catch((e)=>{
             console.log(e)
         })

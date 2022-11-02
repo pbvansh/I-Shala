@@ -50,14 +50,14 @@ const post_internship = () => {
             <div className="min-h-screen max-w-4xl mx-auto relative justify-center">
                 <div className="flex space-x-40 justify-center p-20">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
-                        <Link href="/personal_details">
+                        <Link href="/employee/personal_details">
                             <UsersIcon className="h-12 w-12 cursor-pointer p-3 bg-sky-500 text-white rounded-full" />
                         </Link>
                         <p>Personal Details</p>
                     </div>
                     <span className="h-1 w-[245px] bg-sky-500 absolute top-[100px] left-[22px] ml-14"></span>
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
-                        <Link href="/organization_details">
+                        <Link href="/employee/organization_details">
                             <DocumentDuplicateIcon className="h-12 w-12 cursor-pointer p-3 bg-sky-500 border border-2px border-sky-500 text-white rounded-full" />
                         </Link>
                         <p>Organization Details</p>
@@ -70,11 +70,11 @@ const post_internship = () => {
                     </div>
                 </div>
                 <form ref={formRef}>
-                <div className="text-gray-800 font-semibold text-2xl text-center">
+                <div className="text-gray-800 font-semibold text-2xl text-center mt-2">
                     <p>Post Internship</p>
 
                 </div>
-                <p className="text-gray-700 font-semibold text-lg  ml-40">Internship details</p>
+                <p className="text-gray-700 font-semibold text-lg  ml-40 mt-4">Internship details</p>
                 <div className="border rounded-md border-gray-300 max-w-xl mx-auto p-5 space-y-3 mt-2 text-gray-700 font-semibold">
                     <div className="space-y-1">
                         <lable>Profile(Internship name)</lable>

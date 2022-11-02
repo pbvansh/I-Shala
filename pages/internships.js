@@ -8,9 +8,12 @@ const data = Array(10).fill(1)
 const internships = () => {
 
     const [intern, setIntern] = useState([]);
+    const [location,setLocation] = useState([]);
+    const [category,setCategory] = useState([]);                       
+
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/internship').then((res)=>{
+        axios.get('http://localhost:5000/internship?').then((res)=>{
             setIntern(res.data);
             console.log(res.data);
         }).catch((ex)=>{

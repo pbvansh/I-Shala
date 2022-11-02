@@ -203,7 +203,7 @@ const Navbar = () => {
                     <div className="py-1">
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/auth">
+                      
                             <a
                               href="#"
                               className={classNames(
@@ -225,12 +225,12 @@ const Navbar = () => {
                                 </div>
                               }
                             </a>
-                          </Link>
+                        
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/applications">
+                          <Link href="/student/applications">
                             <a
                               href="#"
                               className={classNames(

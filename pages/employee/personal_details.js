@@ -26,18 +26,20 @@ const Personal_details = () => {
             console.log(res.data)
        }) 
     //    formRef.current.reset()
-     route.push("/organization_details")
+     route.push("/employee/organization_details")
   }
     return (
         <>
             <div className="min-h-screen max-w-4xl mx-auto">
                 <div className="flex space-x-40 justify-center p-20">
+                    <Link href="/employee/personal_details">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
                         <UsersIcon className="h-12 w-12 cursor-pointer text-sky-500 border p-3 border-2px border-sky-500 bg-white rounded-full" />
                         <p>Personal Details</p>
                     </div>
+                    </Link>
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
-                        <Link href="/organization_details">
+                        <Link href="/employee/organization_details">
                         <DocumentDuplicateIcon className="h-12 w-12 cursor-pointer p-3 text-white hover:bg-sky-500 bg-gray-400 rounded-full" />
                          </Link>
                         <p>Organization Details</p>
