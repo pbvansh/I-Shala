@@ -25,11 +25,10 @@ const Dashboard = () => {
                 <section className="text-gray-600">
                     <div className="border border-gray-300 rounded-md shadow-xl ">
                         <div className="grid grid-cols-4 text-gray-500 font-semibold p-2 bg-gray-100">
-                            <p>PROFILE</p>
-                            <p>STATUS</p>
-                            <p>ACTION</p>
-                            <p>REVIEW INTERNSHIP</p>
-
+                            <p className="text-center">PROFILE</p>
+                            <p className="text-center">STATUS</p>
+                            <p className="text-center">ACTION</p>
+                            <p className="text-center">REVIEW INTERNSHIP</p>
                         </div>
                         <div>
                             {/* <div className="grid grid-cols-4 text-gray-500 font-semibold p-3 ">
@@ -45,41 +44,36 @@ const Dashboard = () => {
                             {
                                 internship.map((inter, i) => (
                                     <div key={i} className="grid grid-cols-4 text-gray-500 font-semibold p-3 ">
-                                        <p>{inter.Internship_Name}</p>
-                                        <div className="flex space-x-1 col-span-2">
+                                        <p className="text-center">{inter.Internship_Name}</p>
+                                        <div className="flex space-x-1 items-center justify-center">
                                             <p className="text-sky-500 bg-sky-50 font-semibold text-base border
                                              border-sky-100 rounded-full w-28 text-center">Applied</p>
                                             <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
-                                            <Link href="/employee/action">
-                                            <div className="text-center">
-                                               <BriefcaseIcon className="h-5 w-5 ml-32 text-sky-500 cursor-pointer"/>
-                                            </div>
-                                            </Link>
-                                            
                                         </div>
-                                      
+                                        <Link href={`/employee/action?Internship_id=${inter._id}`}>
+                                            <BriefcaseIcon className="h-5 w-5 text-sky-500 cursor-pointer mx-auto text-center" />
+                                        </Link>
                                         <Link href={{
-                                            pathname : '/employee/review_internship',
-                                            query : {
-                                                Internship_Name : inter.Internship_Name,
-                                                company_name : inter.company_id.Name,
-                                                Location : inter.Location,
-                                                start_date : inter.start_date,
-                                                Duration : inter.Duration ,
-                                                Stipend :inter.Stipend,
-                                                TotalNoOfApplicants : 10,
-                                                About_company : inter.company_id.About_company,
-                                                About_internship : inter.About_internship,
-                                                RequiredSkills : inter.RequiredSkills,
-                                                whocanapply : inter.whocanapply,
-                                                Additional_information : inter.Additional_information,
-                                                NoOfOpening : inter.NoOfOpening,
-                                                perks : inter.perks,
+                                            pathname: '/employee/review_internship',
+                                            query: {
+                                                Internship_Name: inter.Internship_Name,
+                                                company_name: inter.company_id.Name,
+                                                Location: inter.Location,
+                                                start_date: inter.start_date,
+                                                Duration: inter.Duration,
+                                                Stipend: inter.Stipend,
+                                                TotalNoOfApplicants: 10,
+                                                About_company: inter.company_id.About_company,
+                                                About_internship: inter.About_internship,
+                                                RequiredSkills: inter.RequiredSkills,
+                                                whocanapply: inter.whocanapply,
+                                                Additional_information: inter.Additional_information,
+                                                NoOfOpening: inter.NoOfOpening,
+                                                perks: inter.perks,
                                             }
                                         }}>
-                                            <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
+                                            <DocumentReportIcon className="h-6 w-6  ml-10 text-sky-500 cursor-pointer hover:text-sky-600"/>
                                         </Link>
-                                      
                                     </div>
                                 ))
                             }
