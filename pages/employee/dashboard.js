@@ -1,4 +1,4 @@
-import { DocumentReportIcon, QuestionMarkCircleIcon } from "@heroicons/react/outline"
+import { BriefcaseIcon, DocumentReportIcon, QuestionMarkCircleIcon } from "@heroicons/react/outline"
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,8 +9,9 @@ const Dashboard = () => {
     const [internship, setInternship] = useState([])
     useEffect(() => {
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        token && axios.get(`http://localhost:5000/internship/${token.id.}`).then((res) => {
+        axios.get(`http://localhost:5000/company/${token.id}/internship`).then((res) => {
             console.log(res.data);
+            setInternship(res.data)
         }).catch((e) => {
             console.log(e);
         })
@@ -31,7 +32,7 @@ const Dashboard = () => {
 
                         </div>
                         <div>
-                            <div className="grid grid-cols-4 text-gray-500 font-semibold p-3 ">
+                            {/* <div className="grid grid-cols-4 text-gray-500 font-semibold p-3 ">
                                 <p>Web Development</p>
                                 <div className="flex space-x-1 col-span-2">
                                     <p className="text-sky-500 bg-sky-50 font-semibold text-base border border-sky-100 rounded-full w-28 text-center">Applied</p>
@@ -40,8 +41,48 @@ const Dashboard = () => {
                                 <Link href="/review_internship">
                                     <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
                                 </Link>
-                                {/* <p>ACTION</p> */}
-                            </div>
+                            </div> */}
+                            {
+                                internship.map((inter, i) => (
+                                    <div key={i} className="grid grid-cols-4 text-gray-500 font-semibold p-3 ">
+                                        <p>{inter.Internship_Name}</p>
+                                        <div className="flex space-x-1 col-span-2">
+                                            <p className="text-sky-500 bg-sky-50 font-semibold text-base border
+                                             border-sky-100 rounded-full w-28 text-center">Applied</p>
+                                            <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
+                                            <Link href="/employee/action">
+                                            <div className="text-center">
+                                               <BriefcaseIcon className="h-5 w-5 ml-32 text-sky-500 cursor-pointer"/>
+                                            </div>
+                                            </Link>
+                                            
+                                        </div>
+                                      
+                                        <Link href={{
+                                            pathname : '/employee/review_internship',
+                                            query : {
+                                                Internship_Name : inter.Internship_Name,
+                                                company_name : inter.company_id.Name,
+                                                Location : inter.Location,
+                                                start_date : inter.start_date,
+                                                Duration : inter.Duration ,
+                                                Stipend :inter.Stipend,
+                                                TotalNoOfApplicants : 10,
+                                                About_company : inter.company_id.About_company,
+                                                About_internship : inter.About_internship,
+                                                RequiredSkills : inter.RequiredSkills,
+                                                whocanapply : inter.whocanapply,
+                                                Additional_information : inter.Additional_information,
+                                                NoOfOpening : inter.NoOfOpening,
+                                                perks : inter.perks,
+                                            }
+                                        }}>
+                                            <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
+                                        </Link>
+                                      
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </section>

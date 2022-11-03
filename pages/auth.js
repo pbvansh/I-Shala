@@ -55,7 +55,7 @@ const Auth = () => {
             localStorage.setItem('i_shala_user_email',res.data.email)
             localStorage.setItem('i_shala_user_fname',res.data.Fname)
             localStorage.setItem('i_shala_isAuth',res.data.isAuth)
-           route.push("/applications")
+           route.push("/student/applications")
            toast("Login Successfull",{autoClose : 1500,position : "bottom-right"})
         }).catch((e)=>{
             console.log(e)
