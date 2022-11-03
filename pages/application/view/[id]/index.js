@@ -149,7 +149,8 @@ const Review = () => {
                     <hr className='mt-7'></hr>
                     <div className='flex gap-x-28 mt-7'>
                         <p className='text-gray-500 font-semibold'>WORK SAMPLES</p>
-                        <a href="https://github.com/vidhi000" className='text-sky-500 hover:text-sky-600 font-semibold'>https://github.com/vidhi000</a>
+                        <a href="https://github.com/vidhi000" className='text-sky-500 
+                        hover:text-sky-600 font-semibold'>https://github.com/vidhi000</a>
                     </div>
 
                     <hr className='mt-7'></hr>
@@ -157,7 +158,9 @@ const Review = () => {
                     <p className='text-gray-500 font-semibold'>CERTIFICATE</p>
                     {/* <p>Introduction to Web Development with HTML, CSS, JavaScript By IBM</p> */}
                     <p>
-                    <a href="https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766" className='text-sky-500 hover:text-sky-600 font-semibold'>https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766</a>
+                    <a href="https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766" 
+                    className='text-sky-500 hover:text-sky-600 font-semibold'>
+                        https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766</a>
                     </p>
                     </div>
 

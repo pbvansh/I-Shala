@@ -3,6 +3,7 @@ import axios from "axios";
 import Link from "next/link"
 import { useRef, useState } from "react";
 import JWT from 'jsonwebtoken'
+import { useRouter } from "next/router";
 
 const post_internship = () => {
 
@@ -22,7 +23,7 @@ const post_internship = () => {
     // const aboutInternshipRef = useRef();
     const isLiveRef = useRef();  
     const formRef = useRef();
-
+    const route = useRouter()
     const createInternship = (e)=>{
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
@@ -38,10 +39,11 @@ const post_internship = () => {
             whocanapply : whoRef.current.value,
             perks : perksRef.current.value,
             About_internship : aboutInternshipRef.current.value,
-            Additional_information : addinfoRef.current.value,
+             Additional_information : addinfoRef.current.value,
             NoOfOpening : noofOpeningsRef.current.value
         }).then((res)=>{
             console.log(res.data)
+            route.push("/employee/internship_created")
         })
         formRef.current.reset()
     }
@@ -149,23 +151,23 @@ const post_internship = () => {
 
                     <div className="space-y-1">
                         <p>Who can apply</p>
-                        <textarea type="text" ref={whoRef} placeholder="dtgdt" className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-16 p-2" />
+                        <textarea type="text" ref={whoRef} placeholder="dtgdt" className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-2" />
                     </div>
                     <div className="space-y-1">
                         <p>Additional Information</p>
-                        <textarea type="text" ref={addinfoRef} className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-16 p-2" />
+                        <textarea type="text" ref={addinfoRef} className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-24 p-2" />
                     </div>
                     </div>
                 </div>
                 </form>
 
                
-                <Link href="/internship_created">
+             
                     {/* <button onClick={()=>{setModel(true) }}  */}
                     <button onClick={createInternship} className="text-white mb-10 shadow-lg bg-sky-500 ml-[350px] hover:bg-sky-600 font-semibold text-lg text-center p-2 w-40 
             border rounded-md mt-6">
                         Post internship</button>
-                </Link>
+               
 
                 {/* 
             {

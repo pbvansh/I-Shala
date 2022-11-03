@@ -95,22 +95,22 @@ const Index = ({ internship }) => {
                         <hr></hr>
                         <div className='space-y-2'>
                             <p className='font-semibold text-gray-800 text-xl'>About {internship.company_id ? internship.company_id.Name : 'sp'}</p>
-                            <p className='text-base text-gray-500 font-semibold'>{internship.company_id?.About_company}</p>
+                            <p className='text-lg text-gray-600'>{internship.company_id?.About_company}</p>
                         </div>
                         <div className='border rounded-md p-3 space-y-1'>
                             <div>
                                 <p className='text-gray-700 text-base font-semibold'>Activity on Internshala</p>
                             </div>
                             <div className='flex space-x-12'>
-                                <div className='flex space-x-1 text-gray-600 font-semibold'>
+                                <div className='flex space-x-1 text-md text-gray-600'> 
                                     <CalendarIcon className='h-5 w-5' />
                                     <p>Hiring since December 2019</p>
                                 </div>
-                                <div className='flex space-x-1 text-gray-600 font-semibold'>
+                                <div className='flex space-x-1 text-md text-gray-600'>
                                     <ClipboardCheckIcon className='h-5 w-5' />
                                     <p>3674 opportunities posted</p>
                                 </div>
-                                <div className='flex space-x-1 text-gray-600 font-semibold'>
+                                <div className='flex space-x-1 text-md text-gray-600'>
                                     <UsersIcon className='w-5 h-5' />
                                     <p>10252 candidates hired</p>
                                 </div>
@@ -124,16 +124,16 @@ const Index = ({ internship }) => {
                         </div>
                         <div className='text-gray-600 font-normal'>
 
-                            <p className='text-gray-500 font-semibold'>{internship.About_internship}</p>
+                            <p  className='text-lg text-gray-600'>{internship.About_internship}</p>
 
                         </div>
                         <div>
                             <p className='text-gray-800 font-semibold text-xl'>Skills Required</p>
-                            <p className='text-gray-500 text-base font-semibold'>{internship.RequiredSkills}</p>
+                            <p className='text-lg text-gray-600'>{internship.RequiredSkills}</p>
                         </div>
-                        <div className='text-xl text-gray-800 font-semibold'>
-                            <p>Who can apply</p>
-                            <p className='text-gray-500 text-base'>{internship.whocanapply}</p>
+                        <div >
+                            <p className='text-xl text-gray-800 font-semibold'>Who can apply</p>
+                            <p className='text-lg text-gray-600'>{internship.whocanapply}</p>
                         </div>
                         <div >
                             {/* <p>Only those candidates can apply who:</p>
@@ -148,23 +148,23 @@ const Index = ({ internship }) => {
                             <p className='text-xl text-gray-800 font-semibold'>
                                 Perks
                             </p>
-                            <div className='flex space-x-10 text-gray-500 font-semibold'>
+                            <div className='flex space-x-10'>
                                 {/* <p className='border rounded-md bg-gray-100 p-1 outline-none'>Certificate</p>
                                 <p className='border rounded-md bg-gray-100 p-1'>Letter of recommendation</p>
                                 <p className='border rounded-md bg-gray-100 p-1'>Flexible work hours</p> */}
-                                <p>{internship.perks}</p>
+                                <p className='text-lg text-gray-600'>{internship.perks}</p>
                             </div>
 
                         </div>
                         <div className='space-y-2'>
                             <p className='text-xl text-gray-800 font-semibold'>Additional Information</p>
-                            <p className='text-gray-500 font-semibold'>{internship.Additional_information}</p>
+                            <p className='text-lg text-gray-600'>{internship.Additional_information}</p>
                         </div>
                         {/* <p className='text-gray-700'>Incentives shall be awarded to the intern based on the performance.</p> */}
 
                         <div>
                             <p className='text-xl text-gray-800 font-semibold'>Number of openings</p>
-                            <p className='font-semibold text-gray-500'>{internship.NoOfOpening}</p>
+                            <p className='text-lg text-gray-600'>{internship.NoOfOpening}</p>
                         </div>
 
                         {/* <p className='bg-sky-400 text-white font-semibold border rounded-md p-3 w-32 text-lg cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto'>Apply now</p> */}
