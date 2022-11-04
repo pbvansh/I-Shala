@@ -15,7 +15,7 @@ import React from 'react'
 function Footer() {
   return (
     <>
-      <div className="bg-gray-800 text-white">
+      <div className="bg-gray-800 text-white mt-5">
         <div className="grid grid-cols-4">
           {/* column1 */}
           <div className="mx-16">

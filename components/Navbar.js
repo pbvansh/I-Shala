@@ -5,14 +5,21 @@ import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { isEmpState, loginState } from "../atom/loginAtom";
+import JWT from 'jsonwebtoken'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
 
 const Navbar = () => {
 
   const [isLogin, setIsLogin] = useRecoilState(loginState)
-  const [isEmp,setIsEmp] = useRecoilState(isEmpState)
-    const router = useRouter()
+  const [isEmp, setIsEmp] = useRecoilState(isEmpState)
+  const router = useRouter()
 
   useEffect(() => {
+    const token = localStorage.getItem('i_shala_token');
+    const user = JWT.decode(token)
+    if (user?.isEmp) setIsEmp(true)
     if (localStorage.getItem("i_shala_isAuth")) {
       setIsLogin(true)
 
@@ -26,18 +33,19 @@ const Navbar = () => {
     return classes.filter(Boolean).join(' ')
   }
 
-  const Logout = ()=>{
-      setIsLogin(false)
-      setIsEmp(false)
-      localStorage.removeItem("i_shala_isAuth")
-      localStorage.removeItem("i_shala_user_email")
-      localStorage.removeItem("i_shala_token")
-      localStorage.removeItem("i_shala_user_fname")
-      router.push("/")
-      
+  const Logout = () => {
+    setIsLogin(false)
+    setIsEmp(false)
+    toast.success("Logout Successfull",{autoClose : 1500,position : "bottom-right"});
+    localStorage.removeItem("i_shala_isAuth")
+    localStorage.removeItem("i_shala_user_email")
+    localStorage.removeItem("i_shala_token")
+    localStorage.removeItem("i_shala_user_fname")
+    router.push("/")
+
   }
 
-  
+
   return (
 
     <div className="border-b-[1px] p-4 shadow-md bg-white z-50">
@@ -48,13 +56,18 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex flex-grow justify-end items-center space-x-10">
-          <Link href="/internships">
-            <p className="font-semibold cursor-pointer text-gray-500 hover:text-sky-500 text-base">Internships</p>
-          </Link>
-            <Link href='/login'>
+
+          {
+            !isEmp ?
+              <Link href="/internships">
+                <p className="font-semibold cursor-pointer text-gray-500 hover:text-sky-500 text-base">Internships</p>
+              </Link> : null
+          }
+
+          <Link href='/login'>
             <button
-             className="border w-24 p-1 border-sky-700 rounded-sm font-semibold text-sky-500 shadow-md hover:shadow-lg text-lg">Login</button>
-            </Link>
+              className="border w-24 p-1 border-sky-700 rounded-sm font-semibold text-sky-500 shadow-md hover:shadow-lg text-lg">Login</button>
+          </Link>
           {/* <Link href={'/auth'}> */}
 
           {/* <Link href="/auth">
@@ -184,7 +197,7 @@ const Navbar = () => {
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="inline-flex w-full justify-center items-center text-gray-700 hover:text-sky-500 font-semibold text-lg p-2">
-                    <UserCircleIcon className="h-7 w-7 text-gray-500 hover:text-sky-500"/>
+                    <UserCircleIcon className="h-7 w-7 text-gray-500 hover:text-sky-500" />
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                   </Menu.Button>
                 </div>
@@ -203,34 +216,34 @@ const Navbar = () => {
                     <div className="py-1">
                       <Menu.Item>
                         {({ active }) => (
-                      
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? ' text-gray-900':'text-gray-700',
-                                'block px-4 py-2 text-base'
-                              )}
-                            >{
-                                <div>
-                                  <p>{
-                                    localStorage.getItem("i_shala_user_fname")
-                                  }
-                                  </p>
-                                  <p>
-                                    {
-                                      localStorage.getItem("i_shala_user_email")
 
-                                    }
-                                  </p>
-                                </div>
-                              }
-                            </a>
-                        
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? ' text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-base'
+                            )}
+                          >{
+                              <div>
+                                <p>{
+                                  localStorage.getItem("i_shala_user_fname")
+                                }
+                                </p>
+                                <p>
+                                  {
+                                    localStorage.getItem("i_shala_user_email")
+
+                                  }
+                                </p>
+                              </div>
+                            }
+                          </a>
+
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/student/applications">
+                          <Link href={isEmp ? '/employee/dashboard' : '/student/applications'}>
                             <a
                               href="#"
                               className={classNames(
@@ -238,12 +251,12 @@ const Navbar = () => {
                                 'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50'
                               )}
                             >
-                              My Applications
-                              </a>
+                              {isEmp ? 'Dashboard' : 'My Applications'}
+                            </a>
                           </Link>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
+                      {!isEmp && <Menu.Item>
                         {({ active }) => (
                           <Link href="/resume">
                             <a
@@ -258,29 +271,29 @@ const Navbar = () => {
                           </Link>
                         )}
                       </Menu.Item>
-
+                      }
                       <Menu.Item>
                         {({ active }) => (
-                            <a
-                              href="#" 
-                              className={classNames(
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50' ,
-                              )} onClick={Logout}
-                                            >
-                              Log out
-                            </a>
-                        
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50',
+                            )} onClick={Logout}
+                          >
+                            Log out
+                          </a>
+
                         )}
                       </Menu.Item>
-                     
+
                     </div>
                   </Menu.Items>
                 </Transition>
               </Menu>
 
 
-                              }
+          }
 
         </div>
       </nav>

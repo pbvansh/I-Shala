@@ -2,7 +2,7 @@ import { QuestionMarkCircleIcon, DocumentReportIcon } from "@heroicons/react/out
 import Link from "next/link";
 
 const Application = ({ app }) => {
-    console.log(app.Internship_id._id)
+    console.log(app)
     return (
         <>
             <div className="grid grid-cols-9 p-4">

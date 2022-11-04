@@ -30,7 +30,6 @@ const Login = () =>{
             email: LemailRef.current.value,
             password: LpasswordRef.current.value
         }).then((res) => {
-           console.log(res.data.isAuth)
            if(res.data.isAuth){
                 setIsLogin(true)
                 if(res.data.isEmp){
@@ -44,13 +43,13 @@ const Login = () =>{
                 localStorage.setItem('i_shala_user_email',res.data.email)
                 localStorage.setItem('i_shala_user_fname',res.data.Fname)
                 localStorage.setItem('i_shala_isAuth',res.data.isAuth)
-                toast.success("Login Successfull",{autoClose : 1500,position : "bottom-right"});
-                route.push('/')}
+                toast.success(`Welcome ${res.data.Fname}`,{autoClose : 1500,position : "bottom-right"});
+                !res.data.isEmp ? route.push('/student/applications') : route.push('/')}
             else {
                 toast.warning(res.data.msg,{autoClose : 1500,position : "bottom-right"});
             }
         }).catch((e)=>{
-            console.log(e)
+            console.log(e.message)
         })
         formRef.current.reset();
     }
