@@ -30,21 +30,25 @@ const Login = () =>{
             email: LemailRef.current.value,
             password: LpasswordRef.current.value
         }).then((res) => {
-            setIsLogin(true)
-            console.log(res.data);
-            if(res.data.isEmp){
-                setIsEmp(true)
-                console.log(res.data.isEmp)
-            }else{
-                setIsEmp(false)
-                console.log(res.data.isEmp)
+           console.log(res.data.isAuth)
+           if(res.data.isAuth){
+                setIsLogin(true)
+                if(res.data.isEmp){
+                    setIsEmp(true)
+                    console.log(res.data.isEmp)
+                }else{
+                    setIsEmp(false)
+                    console.log(res.data.isEmp)
+                }
+                localStorage.setItem('i_shala_token',res.data.token);
+                localStorage.setItem('i_shala_user_email',res.data.email)
+                localStorage.setItem('i_shala_user_fname',res.data.Fname)
+                localStorage.setItem('i_shala_isAuth',res.data.isAuth)
+                toast.success("Login Successfull",{autoClose : 1500,position : "bottom-right"});
+                route.push('/')}
+            else {
+                toast.warning(res.data.msg,{autoClose : 1500,position : "bottom-right"});
             }
-            localStorage.setItem('i_shala_token',res.data.token);
-            localStorage.setItem('i_shala_user_email',res.data.email)
-            localStorage.setItem('i_shala_user_fname',res.data.Fname)
-            localStorage.setItem('i_shala_isAuth',res.data.isAuth)
-            toast("Login Successfull",{autoClose : 1500,position : "bottom-right"});
-            route.push('/')
         }).catch((e)=>{
             console.log(e)
         })
