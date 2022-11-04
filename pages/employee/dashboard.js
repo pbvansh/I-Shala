@@ -50,7 +50,12 @@ const Dashboard = () => {
                                              border-sky-100 rounded-full w-28 text-center">Applied</p>
                                             <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
                                         </div>
-                                        <Link href={`/employee/action?Internship_id=${inter._id}`}>
+                                        <Link href={{
+                                            pathname: '/employee/action/',
+                                            query: {
+                                                Internship_id: inter._id
+                                            }
+                                        }}>
                                             <BriefcaseIcon className="h-5 w-5 text-sky-500 cursor-pointer mx-auto text-center" />
                                         </Link>
                                         <Link href={{
@@ -72,7 +77,7 @@ const Dashboard = () => {
                                                 perks: inter.perks,
                                             }
                                         }}>
-                                            <DocumentReportIcon className="h-6 w-6  ml-10 text-sky-500 cursor-pointer hover:text-sky-600"/>
+                                            <DocumentReportIcon className="h-6 w-6  ml-10 text-sky-500 cursor-pointer hover:text-sky-600" />
                                         </Link>
                                     </div>
                                 ))

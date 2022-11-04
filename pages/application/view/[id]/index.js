@@ -8,7 +8,7 @@ import Link from "next/link";
 const Review = () => {
     const route = useRouter();
     const id = route.query.id;
-    console.log(id)
+  
     const [app, setApp] = useState([])
 
     useEffect(() => {
