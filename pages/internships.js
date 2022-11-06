@@ -8,11 +8,11 @@ const data = Array(10).fill(1)
 const internships = () => {
 
     const [intern, setIntern] = useState([]);
-    const [location, setLocation] = useState(null);
-    const [category, setCategory] = useState(null);
-    const [stipend, setStipend] = useState(null);
-    const [type,setType] = useState(null);
-    const [opations, setOpations] = useState({});
+    const [location, setLocation] = useState('');
+    const [category, setCategory] = useState('');
+    const [stipend, setStipend] = useState('');
+    const [type,setType] = useState('');
+    // const [opations, setOpations] = useState({});
     const [URL,setURL] = useState('http://localhost:5000/internship')
 
     useEffect(() => {
@@ -25,19 +25,24 @@ const internships = () => {
     }, [URL])
 
     const setQuaryPrams =()=>{
+        let options = '';
         if(stipend){
-            setURL(`http://localhost:5000/internship?stipend=${stipend}`)
+            options+=`stipend=${stipend}&`;
+            // setURL(`http://localhost:5000/internship?stipend=${stipend}`)
         }
         if(location){
-            setURL(`http://localhost:5000/internship?location=${location}`)
+            options+=`location=${location}&`;
+            // setURL(`http://localhost:5000/internship?location=${location}`)
         }
         if(type){
-            setURL(`http://localhost:5000/internship?type=${type}`)
+            options+=`type=${type}&`;
+            // setURL(`http://localhost:5000/internship?type=${type}`)
         }
         if(category){
-            setURL(`http://localhost:5000/internship?category=${category}`)
+            options+=`category=${category}&`;
+            // setURL(`http://localhost:5000/internship?category=${category}`)
         }
-
+        setURL(`http://localhost:5000/internship?${options}`)
     }
     return (
         <div className="bg-gray-50 min-h-screen ">

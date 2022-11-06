@@ -36,7 +36,7 @@ const Navbar = () => {
   const Logout = () => {
     setIsLogin(false)
     setIsEmp(false)
-    toast.success("Logout Successfull",{autoClose : 1500,position : "bottom-right"});
+    toast.success("Logout Successfull", { autoClose: 1500, position: "bottom-right" });
     localStorage.removeItem("i_shala_isAuth")
     localStorage.removeItem("i_shala_user_email")
     localStorage.removeItem("i_shala_token")
@@ -63,11 +63,13 @@ const Navbar = () => {
                 <p className="font-semibold cursor-pointer text-gray-500 hover:text-sky-500 text-base">Internships</p>
               </Link> : null
           }
+          {!isLogin ?
+            <Link href='/login'>
+              <button
+                className="border w-24 p-1 border-sky-700 rounded-sm font-semibold text-sky-500 shadow-md hover:shadow-lg text-lg">Login</button>
+            </Link> : null
+          }
 
-          <Link href='/login'>
-            <button
-              className="border w-24 p-1 border-sky-700 rounded-sm font-semibold text-sky-500 shadow-md hover:shadow-lg text-lg">Login</button>
-          </Link>
           {/* <Link href={'/auth'}> */}
 
           {/* <Link href="/auth">
@@ -83,10 +85,10 @@ const Navbar = () => {
               <p className="text-gray-500 hover:text-sky-500 font-semibold text-base cursor-pointer">My Applications</p>
             </Link>
           </div> */}
-          <Link href='/add'>
-            <p className="font-semibold cursor-pointer  w-28 px-5 py-2 text-center
-             bg-white hover:bg-sky-400 text-gray-500 hover:text-white  shadow-lg  border rounded-md">Add</p>
-          </Link>
+          {isEmp &&
+            <Link href="/employee/post_internship">
+            <p className="font-semibold cursor-pointer text-gray-500 hover:text-sky-500 text-base">Post Internships</p>
+          </Link>}
           {/* <UserCircleIcon className="w-7 h-7 text-gray-700 hover:text-sky-500 cursor-pointer"/> */}
           {/* <div className="relative w-full lg:max-w-sm p-3 ">
             <select className="w-full p-2 text-gray-500 space-y-3  bg-white border rounded-md shadow-sm outline-none

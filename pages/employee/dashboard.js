@@ -51,7 +51,7 @@ const Dashboard = () => {
                                             <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
                                         </div>
                                         <Link href={{
-                                            pathname: '/employee/action/',
+                                            pathname: '/employee/applicants/',
                                             query: {
                                                 Internship_id: inter._id
                                             }

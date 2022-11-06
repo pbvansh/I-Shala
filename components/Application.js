@@ -19,7 +19,7 @@ const Application = ({ app }) => {
                 <p>{app.createdAt.split('T')[0]}</p>
                 <p>{app.Internship_id?.TotalNoOfApplicants}</p>
                 <div className="flex space-x-1 col-span-2">
-                    <p className="text-sky-500 bg-sky-50 font-semibold text-base border border-sky-100 rounded-full w-28 text-center">Applied</p>
+                    <p className="text-sky-500 bg-sky-50 font-semibold text-base border border-sky-100 rounded-full w-28 text-center">{app.application_status}</p>
                     <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
                 </div>
                 <Link href={`../application/view/${app._id}`}>
