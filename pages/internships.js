@@ -27,7 +27,7 @@ const internships = () => {
     const setQuaryPrams =()=>{
         let options = '';
         if(stipend){
-            options+=`stipend=${stipend}&`;
+            options+=`stipend=${stipend*100}&`;
             // setURL(`http://localhost:5000/internship?stipend=${stipend}`)
         }
         if(location){

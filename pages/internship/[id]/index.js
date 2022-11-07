@@ -7,7 +7,7 @@ import axios from 'axios';
 import JWT from 'jsonwebtoken'
 import { useRouter } from 'next/router';
 
-const Index = ({ internship }) => {
+const Index = ({ internship,totalApplicants}) => {
 
     const router = useRouter()
 
@@ -90,7 +90,7 @@ const Index = ({ internship }) => {
                         </div>
                         <div className='flex text-gray-600 space-x-2'>
                             <UserGroupIcon className='h-5 w-5' />
-                            <p className='text-gray-500 font-semibold'>{internship.TotalNoOfApplicants}Applicants</p>
+                            <p className='text-gray-500 font-semibold'>{totalApplicants} Applicants</p>
                         </div>
                         <hr></hr>
                         <div className='space-y-2'>
@@ -190,10 +190,13 @@ export default Index
 export async function getStaticProps(context) {
     const { id } = context.params;
     const res = await axios.get('http://localhost:5000/internship/' + id);
+    const {data} = await axios.get(`http://localhost:5000/application/${id}/totalApplicant`)
     const internship = res.data;
     return {
         props: {
-            internship
+            internship,
+            totalApplicants : data
+          
         }
     }
 }

@@ -14,7 +14,7 @@ const internship_created = () => {
             </div>
             </div>
             <div className="flex mt-20 space-x-3 ml-[650px]">
-                <Link href="/dashboard">
+                <Link href="/employee/dashboard">
                 <button className="text-sky-500  hover:text-sky-600  hover:border-sky-600 font-semibold text-xl">
                   Go To Internship dashboard</button>
                 </Link>

@@ -1,8 +1,15 @@
 import { QuestionMarkCircleIcon, DocumentReportIcon } from "@heroicons/react/outline"
+import axios from "axios";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Application = ({ app }) => {
-    console.log(app)
+    const [applicants,setApplicants] = useState(0)
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/application/${app.Internship_id._id}/totalApplicant`).then((res)=>{
+         setApplicants(res.data)
+        })
+     },[])
     return (
         <>
             <div className="grid grid-cols-9 p-4">
@@ -17,7 +24,7 @@ const Application = ({ app }) => {
                     </Link>
                 </div>
                 <p>{app.createdAt.split('T')[0]}</p>
-                <p>{app.Internship_id?.TotalNoOfApplicants}</p>
+                <p>{applicants}</p>
                 <div className="flex space-x-1 col-span-2">
                     <p className="text-sky-500 bg-sky-50 font-semibold text-base border border-sky-100 rounded-full w-28 text-center">{app.application_status}</p>
                     <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
