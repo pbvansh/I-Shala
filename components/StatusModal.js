@@ -31,8 +31,6 @@ const StatusModal = ({ setshowStatusModal }) => {
                             <span className="sr-only">Close modal</span>
                         </button>
                         <div className="p-6 text-center mb-3">
-                            {true ?
-                                <>
                                     <img src='https://t3.ftcdn.net/jpg/02/96/27/28/240_F_296272864_7XXe0wavzRXA9zKSkzXxhmZhQbyY8b26.jpg' height={100} width={100} className='mx-auto p-1' />
                                     <div className='mb-5 whitespace-nowrap'>
                                         {
@@ -41,7 +39,8 @@ const StatusModal = ({ setshowStatusModal }) => {
                                                     <button key={i} onClick={() => {
                                                         if (i > idx) {
                                                             setPreStatus(item);
-                                                            axios.put(`http://localhost:5000/application/updateapp/${applicationIdforUpdate}`, { application_status: item }).then((res) => {
+                                                            axios.put(`http://localhost:5000/application/updateapp/${applicationIdforUpdate}`,
+                                                             { application_status: item }).then((res) => {
                                                                 setIsUpdated(!isUpdated);
                                                             })
                                                         }
@@ -50,15 +49,6 @@ const StatusModal = ({ setshowStatusModal }) => {
                                             })
                                         }
                                     </div>
-                                </>
-                                :
-                                <>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/2143/2143150.png" height={100} width={100} className='mx-auto p-3' />
-                                    <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Catogory Added successfully</h3>
-                                    <button onClick={() => setshowStatusModal(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-[#45C9A5] focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Go Back</button>
-                                </>
-                            }
-
                         </div>
                     </div>
                 </div>

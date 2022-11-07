@@ -34,10 +34,8 @@ const Login = () =>{
                 setIsLogin(true)
                 if(res.data.isEmp){
                     setIsEmp(true)
-                    console.log(res.data.isEmp)
                 }else{
                     setIsEmp(false)
-                    console.log(res.data.isEmp)
                 }
                 localStorage.setItem('i_shala_token',res.data.token);
                 localStorage.setItem('i_shala_user_email',res.data.email)

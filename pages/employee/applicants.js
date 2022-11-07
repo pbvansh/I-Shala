@@ -56,7 +56,7 @@ const Applicants = ({ id }) => {
 export default Applicants;
 
 
-export async function getServerSideProps(context) {
+export function getServerSideProps(context) {
   const id = (context.query.Internship_id).toString();
   return {
     props: { id }

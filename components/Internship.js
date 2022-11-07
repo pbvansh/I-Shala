@@ -1,4 +1,4 @@
-import { CalendarIcon, ChevronRightIcon, ClockIcon, CurrencyRupeeIcon, HomeIcon, LocationMarkerIcon, MapIcon, PlayIcon, TrendingUpIcon } from '@heroicons/react/outline'
+import { CalendarIcon, ChevronRightIcon, ClockIcon, CurrencyRupeeIcon, HomeIcon, LocationMarkerIcon, PlayIcon, TrendingUpIcon } from '@heroicons/react/outline'
 import Link from 'next/link';
 
 

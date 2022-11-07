@@ -113,7 +113,7 @@ const post_internship = () => {
 
                     <div className="space-y-1">
                         <label>About Internship</label>
-                        <textarea type="text" ref={aboutInternshipRef} placeholder="Selected intern's day-to-day responsibilities include:" className="border rounded-md
+                        <textarea type="text" ref={aboutInternshipRef} className="border rounded-md
                          border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-1" />
                     </div>
 

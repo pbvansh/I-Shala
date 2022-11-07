@@ -90,7 +90,7 @@ const internships = () => {
                             <span>10k</span>
                         </div>
                     </div>
-                    <button className="bg-gray-200 p-2 rounded-full border font-semibold hover:border-sky-400 hover:text-sky-500" onClick={setQuaryPrams}>Apply</button>
+                    <button className="bg-gray-200 p-2 rounded-full border font-semibold hover:border-sky-600 hover:text-sky-600" onClick={setQuaryPrams}>Apply</button>
                     <p onClick={()=>setURL('http://localhost:5000/internship')} className="text-sky-500 hover:text-sky-600 font-semibold text-right cursor-pointer">Clear all</p>
 
                 </div>
