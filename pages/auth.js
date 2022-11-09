@@ -142,7 +142,7 @@ const Auth = () => {
                                 </div>
                                 <div className="justify-center space-y-5">
                                     <p className="text-sm justify-center">By signing up, you agree to our <span className="text-sky-500 font-semibold text-sm cursor-pointer hover:text-sky-600">Terms and Conditions.</span></p>
-                                    <button className="bg-sky-500 text-xl font-semibold text-white border rounded-sm  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg" onClick={userReg}>Sign up</button>
+                                    <button className="bg-sky-500 text-xl font-semibold text-white border rounded-md cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg" onClick={userReg}>Sign up</button>
                                     
                                 </div>
                                 <div className="flex justify-center">
@@ -171,7 +171,7 @@ const Auth = () => {
                                 </div>
                                 <p className="text-sm font-semibold cursor-pointer text-sky-500 hover:text-sky-600">Forgot password?</p>
 
-                                <button className="bg-sky-500 text-xl font-semibold text-white border rounded-sm  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg" onClick={userLogin}>Login</button>
+                                <button className="bg-sky-500 text-xl font-semibold text-white border rounded-md  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg" onClick={userLogin}>Login</button>
                                 <p>New to Internshala?<span className="p-2 font-semibold text-sky-500 hover:text-sky-600 cursor-pointer bg-gray-50" onClick={() => setLoginSignup(true)}>Register</span></p>
 
                             </div>

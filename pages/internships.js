@@ -64,12 +64,16 @@ const internships = () => {
                         <input type='Location' value={location} onChange={(e)=>setLocation(e.target.value)} placeholder="e.g. Ahemdabad" className="outline-none p-[6px] border rounded-sm border-gray-300 hover:border-sky-500  w-full" />
                     </div>
                     <div className="space-y-1">
-                        <div className="space-x-1">
-                            <input onClick={()=>setType('home')} type='checkbox' />
+                        <div className="space-x-2">
+                            <input onClick={()=>setType('home')} type='checkbox' name="type" />
                             <label className="text-gray-600 text-sm font-semibold">Work from home</label><br />
                         </div>
-                        <div className="space-x-1">
-                            <input onClick={()=>setType('In-office')} type='checkbox' className="mt-2" />
+                        <div className="space-x-2">
+                            <input onClick={()=>setType('In-office')} type='checkbox' name="type" className="mt-2" />
+                            <label className="text-gray-600 text-sm font-semibold">In-office</label>
+                        </div>
+                        <div className="space-x-2">
+                            <input onClick={()=>setType('In-office')} type='checkbox' name="type" className="mt-2" />
                             <label className="text-gray-600 text-sm font-semibold">Part-time</label>
                         </div>
                     </div>

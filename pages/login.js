@@ -105,7 +105,7 @@ const Login = () =>{
                         </div>
                         <p className="text-sm font-semibold cursor-pointer text-sky-500 hover:text-sky-600">Forgot password?</p>
 
-                        <button onClick={Login} className="bg-sky-500 text-xl font-semibold text-white border rounded-sm  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg">Login</button>
+                        <button onClick={Login} className="bg-sky-500 text-xl font-semibold text-white border rounded-md  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg">Login</button>
 
 
 

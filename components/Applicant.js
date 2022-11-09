@@ -22,7 +22,7 @@ const Applicant = ({ cand, i, setshowStatusModal }) => {
                 <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
             </Link>
             <p className="text-sky-500 bg-sky-50 font-semibold text-base border
-             border-sky-100 rounded-full w-28 text-center">{cand.application_status}</p>
+             border-sky-100 rounded-full w-20 justify-center text-center">{cand.application_status}</p>
             <button className="border rounded-full shadow-lg p-1 w-20 border-gray-200 cursor-pointer text-gray-600 hover:text-sky-600 font-semibold hover:border-sky-600"
                 onClick={() => { 
                                  setStatus(cand.application_status)

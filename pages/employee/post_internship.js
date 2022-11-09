@@ -21,33 +21,34 @@ const post_internship = () => {
     const addinfoRef = useRef();
     const whoRef = useRef();
     // const aboutInternshipRef = useRef();
-    const isLiveRef = useRef();  
+    const isLiveRef = useRef();
     const formRef = useRef();
     const route = useRouter()
-    const createInternship = (e)=>{
+    const createInternship = (e) => {
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.post("http://localhost:5000/internship/create",{
-            company_id : token.id,
-            Internship_Name : nameRef.current.value,
-            Internship_type : typeRef.current.value,
-            Location : locationRef.current.value,
-            Duration : durationRef.current.value,
-            start_date : startRef.current.value,
-            Stipend : stipendRef.current.value,
-            RequiredSkills : skillsRef.current.value,
-            whocanapply : whoRef.current.value,
-            perks : perksRef.current.value,
-            About_internship : aboutInternshipRef.current.value,
-             Additional_information : addinfoRef.current.value,
-            NoOfOpening : noofOpeningsRef.current.value
-        }).then((res)=>{
-            console.log(res.data)
-            route.push("/employee/internship_created")
-        })
+        // axios.post("http://localhost:5000/internship/create", {
+        //     company_id: token.id,
+        //     Internship_Name: nameRef.current.value,
+        //     Internship_type: typeRef.current.value,
+        //     Location: locationRef.current.value,
+        //     Duration: durationRef.current.value,
+        //     start_date: startRef.current.value,
+        //     Stipend: stipendRef.current.value,
+        //     RequiredSkills: skillsRef.current.value,
+        //     whocanapply: whoRef.current.value,
+        //     perks: perksRef.current.value,
+        //     About_internship: aboutInternshipRef.current.value,
+        //     Additional_information: addinfoRef.current.value,
+        //     NoOfOpening: noofOpeningsRef.current.value
+        // }).then((res) => {
+        //     console.log(res.data)
+        //     route.push("/employee/internship_created")
+        // })
+        console.log(typeRef.current.value)
         formRef.current.reset()
     }
-    
+
 
 
     return (
@@ -75,99 +76,116 @@ const post_internship = () => {
                     </div>
                 </div>
                 <form ref={formRef}>
-                <div className="text-gray-800 font-semibold text-2xl text-center mt-2">
-                    <p>Post Internship</p>
+                    <div className="text-gray-800 font-semibold text-2xl text-center mt-2">
+                        <p>Post Internship</p>
 
-                </div>
-                <p className="text-gray-700 font-semibold text-lg  ml-40 mt-4">Internship details</p>
-                <div className="border rounded-md border-gray-300 max-w-xl mx-auto p-5 space-y-3 mt-2 text-gray-700 font-semibold">
-                    <div className="space-y-1">
-                        <lable>Profile(Internship name)</lable>
-                        <input type="text" ref={nameRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
                     </div>
+                    <p className="text-gray-700 font-semibold text-lg  ml-40 mt-4">Internship details</p>
+                    <div className="border rounded-md border-gray-300 max-w-xl mx-auto p-5 space-y-3 mt-2 text-gray-700 font-semibold">
+                        <div className="space-y-1">
+                            <lable>Profile(Internship name)</lable>
+                            <input type="text" ref={nameRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                        </div>
 
-                    <div className="space-y-1">
-                        <lable>Internship type</lable>
-                        <input type="text" ref={typeRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
-                    </div>
+                        <div className="space-y-1">
+                            <lable>Internship type</lable>
+                            {/* <input type="text" ref={typeRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input> */}
+                        </div>
 
-                    <div className="space-y-1">
-                        <lable>City/Cities</lable>
-                        <input type="text" ref={locationRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
-                    </div>
+                        <div className="text-gray-700 flex space-x-10 border border-gray-300 p-2 rounded-md text-center">
+                            <div className="space-x-1">
+                                <input type="radio" ref={typeRef} name="type" value="work from home" />
+                                <lable>work from home</lable>
+                            </div>
+                            <div className="space-x-1">
+                                <input type="radio" ref={typeRef} name="type" value="In-office"/>
+                                <lable>In-office</lable>
+                            </div>
+                            <div className="space-x-1">
+                                <input type="radio" ref={typeRef} name="type" value="part-time" />
+                                <lable>part-time</lable>
+                            </div>
 
-                    <div className="space-y-1">
-                        <lable>Number of openings</lable>
-                        <input type="text" ref={noofOpeningsRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
-                    </div>
 
-                    <div className="space-y-1">
-                        <lable>Internship start date</lable>
-                        <input type="text" ref={startRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
-                    </div>
+                        </div>
 
-                    <div className="space-y-1">
-                        <lable>Internship duration</lable>
-                        <input type="text" ref={durationRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
-                    </div>
+                        <div className="space-y-1">
+                            <lable>City/Cities</lable>
+                            <input type="text" ref={locationRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                        </div>
 
-                    <div className="space-y-1">
-                        <label>About Internship</label>
-                        <textarea type="text" ref={aboutInternshipRef} className="border rounded-md
+                        <div className="space-y-1">
+                            <lable>Number of openings</lable>
+                            <input type="text" ref={noofOpeningsRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                        </div>
+
+                        <div className="space-y-1">
+                            <lable>Internship start date</lable>
+                            <input type="text" ref={startRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                        </div>
+
+                        <div className="space-y-1">
+                            <lable>Internship duration</lable>
+                            <input type="text" ref={durationRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                        </div>
+
+                        <div className="space-y-1">
+                            <label>About Internship</label>
+                            <textarea type="text" ref={aboutInternshipRef} className="border rounded-md
                          border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-1" />
-                    </div>
+                        </div>
 
-                    <div className="space-y-1">
-                        <label>Intern’s responsibilities</label>
-                        <textarea type="text" ref={responsibilityRef} placeholder="Selected intern's day-to-day responsibilities include:" className="border rounded-md
+                        <div className="space-y-1">
+                            <label>Intern’s responsibilities</label>
+                            <textarea type="text" ref={responsibilityRef} placeholder="Selected intern's day-to-day responsibilities include:" className="border rounded-md
                          border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-1" />
+                        </div>
+
                     </div>
 
-                </div>
+                    <p className="text-lg font-semibold text-gray-700 ml-40 mt-10">Stipend and Perks</p>
+                    <div className="border rounded-md border-gray-300 max-w-xl mx-auto mt-2 mb-5 p-5 space-y-3 text-gray-700 font-semibold">
+                        <div className="space-y-1">
+                            <label>Stipend</label>
+                            <input type="text" ref={stipendRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full" />
+                        </div>
 
-                <p className="text-lg font-semibold text-gray-700 ml-40 mt-10">Stipend and Perks</p>
-                <div className="border rounded-md border-gray-300 max-w-xl mx-auto mt-2 mb-5 p-5 space-y-3 text-gray-700 font-semibold">
-                    <div className="space-y-1">
-                        <label>Stipend</label>
-                        <input type="text" ref={stipendRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full" />
-                    </div>
-                   
-                    <div className="space-y-1">
-                    <p >Perks</p>
-                    <textarea type="text" ref={perksRef} className="border rounded-md
+                        <div className="space-y-1">
+                            <p >Perks</p>
+                            <textarea type="text" ref={perksRef} className="border rounded-md
                       border-gray-300 hover:border-sky-500 outline-none block w-full h-16 p-2" />
+                        </div>
                     </div>
-                </div>
 
-                {/* stipend */}
-                <p className="text-lg font-semibold text-gray-700 ml-40 mt-10">SKills</p>
-                <div className="border rounded-md border-gray-300 max-w-xl mx-auto mt-2 mb-5 text-gray-700 font-semibold">
-                    <div className="p-5 space-y-3">
-                    <div className="space-y-1">
-                        <p>Skills required</p>
-                        <textarea type="text" ref={skillsRef} placeholder="e.g. Javascript , Java" className="border rounded-md
+                    {/* stipend */}
+                    <p className="text-lg font-semibold text-gray-700 ml-40 mt-10">SKills</p>
+                    <div className="border rounded-md border-gray-300 max-w-xl mx-auto mt-2 mb-5 text-gray-700 font-semibold">
+                        <div className="p-5 space-y-3">
+                            <div className="space-y-1">
+                                <p>Skills required</p>
+                                <textarea type="text" ref={skillsRef} placeholder="e.g. Javascript , Java" className="border rounded-md
                  border-gray-300 hover:border-sky-500 outline-none block w-full h-16 p-2" />
-                    </div>
+                            </div>
 
-                    <div className="space-y-1">
-                        <p>Who can apply</p>
-                        <textarea type="text" ref={whoRef} placeholder="dtgdt" className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-2" />
+                            <div className="space-y-1">
+                                <p>Who can apply</p>
+                                <textarea type="text" ref={whoRef} placeholder="dtgdt" className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-2" />
+                            </div>
+                            <div className="space-y-1">
+                                <p>Additional Information</p>
+                                <textarea type="text" ref={addinfoRef} className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-24 p-2" />
+                            </div>
+                        </div>
                     </div>
-                    <div className="space-y-1">
-                        <p>Additional Information</p>
-                        <textarea type="text" ref={addinfoRef} className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-24 p-2" />
-                    </div>
-                    </div>
-                </div>
                 </form>
 
-               
-             
-                    {/* <button onClick={()=>{setModel(true) }}  */}
-                    <button onClick={createInternship} className="text-white mb-10 shadow-lg bg-sky-500 ml-[350px] hover:bg-sky-600 font-semibold text-lg text-center p-2 w-40 
+
+
+                {/* <button onClick={()=>{setModel(true) }}  */}
+                <button onClick={createInternship} className="text-white mb-10 shadow-lg bg-sky-500 ml-[350px] hover:bg-sky-600 font-semibold text-lg text-center p-2 w-40 
             border rounded-md mt-6">
-                        Post internship</button>
-               
+                    Post internship</button>
+
 
                 {/* 
             {

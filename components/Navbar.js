@@ -60,13 +60,13 @@ const Navbar = () => {
           {
             !isEmp ?
               <Link href="/internships">
-                <p className="font-semibold cursor-pointer text-gray-500 hover:text-sky-500 text-base">Internships</p>
+                <p className="font-semibold cursor-pointer text-gray-500 hover:text-sky-500 text-lg">Internships</p>
               </Link> : null
           }
           {!isLogin ?
             <Link href='/login'>
               <button
-                className="border w-24 p-1 border-sky-700 rounded-sm font-semibold text-sky-500 shadow-md hover:shadow-lg text-lg">Login</button>
+                className="border w-24 h-11 p-1 border-gray-300 hover:border-sky-600 rounded-md font-semibold text-sky-500 shadow-md hover:shadow-lg text-lg">Login</button>
             </Link> : null
           }
 
