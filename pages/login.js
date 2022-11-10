@@ -84,7 +84,7 @@ const Login = () =>{
 
                     <form ref={formRef} className="border min-w-[400px] rounded-sm max-w-sm space-y-5 p-10  text-gray-600 shadow-xl bg-gray-50">
                         <div className="flex justify-evenly">
-                            <p onClick={()=>setIsStudent(true)} className={`font-bold px-5 py-2 cursor-pointer text-xl text-gray-700 ${isStudent && ('text-sky-500 border-b-2 border-sky-500') }`}>Student</p>
+                            <p onClick={()=>setIsStudent(true)} className={`font-bold  px-5 py-2 cursor-pointer text-xl text-gray-700 ${isStudent && ('text-sky-500 border-b-2 border-sky-500') }`}>Student</p>
                             <p onClick={()=>setIsStudent(false)} className={`font-bold px-5 py-2 cursor-pointer text-xl text-gray-700 ${!isStudent && ('text-sky-500 border-b-2 border-sky-500') }`}>Employer</p>
                         </div>
                         <div className="flex space-x-2 border rounded-sm max-w-full items-center justify-center bg-white">

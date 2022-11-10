@@ -48,7 +48,7 @@ const internships = () => {
         <div className="bg-gray-50 min-h-screen ">
             {/* left */}
             <div className="max-w-screen-xl mx-auto pt-24 flex">
-                <div className="bg-white border rounded-md flex flex-col max-w-xs p-5 space-y-4 max-h-[530px] shadow-lg">
+                <div className="bg-white border rounded-md flex flex-col max-w-xs p-5 space-y-4 max-h-[550px] shadow-lg">
                     <div className="flex p-3 justify-center">
                         <img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-8-1/1024/filter8-256.png"
                             className="textsk" height={10} width={20} />

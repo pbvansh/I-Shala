@@ -199,8 +199,9 @@ const Navbar = () => {
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="inline-flex w-full justify-center items-center text-gray-700 hover:text-sky-500 font-semibold text-lg p-2">
-                    <UserCircleIcon className="h-7 w-7 text-gray-500 hover:text-sky-500" />
-                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                    {/* <UserCircleIcon className="h-7 w-7 text-gray-500 hover:text-sky-500" /> */}
+                    <img src="https://sharedpro.in/images/user-icon.png" className="h-8 w-8"/>
+                    <ChevronDownIcon className="-mr-1 ml-2 h-6 w-6 text-sky-600" aria-hidden="true" />
                   </Menu.Button>
                 </div>
 
@@ -222,8 +223,8 @@ const Navbar = () => {
                           <a
                             href="#"
                             className={classNames(
-                              active ? ' text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-base'
+                              active ? ' text-gray-900' : 'text-gray-500',
+                              'block px-4 py-2 text-base font-semibold'
                             )}
                           >{
                               <div>
@@ -249,8 +250,8 @@ const Navbar = () => {
                             <a
                               href="#"
                               className={classNames(
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50'
+                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-500',
+                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50 font-semibold'
                               )}
                             >
                               {isEmp ? 'Dashboard' : 'My Applications'}
@@ -260,15 +261,15 @@ const Navbar = () => {
                       </Menu.Item>
                       {!isEmp && <Menu.Item>
                         {({ active }) => (
-                          <Link href="/resume">
+                          <Link href="/student/myresume">
                             <a
                               href="#"
                               className={classNames(
-                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50'
+                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-500', 
+                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50 font-semibold'
                               )}
                             >
-                              Resume
+                              My Resume
                             </a>
                           </Link>
                         )}
@@ -279,8 +280,8 @@ const Navbar = () => {
                           <a
                             href="#"
                             className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50',
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-500',
+                              'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50 font-semibold',
                             )} onClick={Logout}
                           >
                             Log out
