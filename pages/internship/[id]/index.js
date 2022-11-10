@@ -6,6 +6,7 @@ import React from 'react'
 import axios from 'axios';
 import JWT from 'jsonwebtoken'
 import { useRouter } from 'next/router';
+import Header from '../../../components/Header';
 
 const Index = ({ internship,totalApplicants}) => {
 
@@ -30,6 +31,7 @@ const Index = ({ internship,totalApplicants}) => {
     // console.log(internship);
     return (
         <div>
+            <Header title={internship.Internship_Name}/>
             <div className='p-8 justify-center text-center text-4xl mt-0'>
                 <p className=' font-semibold text-gray-800'>{internship.Internship_Name} Internship At {internship.company_id ? internship.company_id.Name : 'sp'}</p>
             </div>

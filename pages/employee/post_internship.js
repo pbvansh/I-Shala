@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 
 const post_internship = () => {
 
+    const [type,setType] = useState(null);
     const nameRef = useRef();
-    const typeRef = useRef();
     const locationRef = useRef();
     const noofOpeningsRef = useRef();
     const startRef = useRef();
@@ -20,32 +20,29 @@ const post_internship = () => {
     const skillsRef = useRef();
     const addinfoRef = useRef();
     const whoRef = useRef();
-    // const aboutInternshipRef = useRef();
-    const isLiveRef = useRef();
     const formRef = useRef();
     const route = useRouter()
     const createInternship = (e) => {
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        // axios.post("http://localhost:5000/internship/create", {
-        //     company_id: token.id,
-        //     Internship_Name: nameRef.current.value,
-        //     Internship_type: typeRef.current.value,
-        //     Location: locationRef.current.value,
-        //     Duration: durationRef.current.value,
-        //     start_date: startRef.current.value,
-        //     Stipend: stipendRef.current.value,
-        //     RequiredSkills: skillsRef.current.value,
-        //     whocanapply: whoRef.current.value,
-        //     perks: perksRef.current.value,
-        //     About_internship: aboutInternshipRef.current.value,
-        //     Additional_information: addinfoRef.current.value,
-        //     NoOfOpening: noofOpeningsRef.current.value
-        // }).then((res) => {
-        //     console.log(res.data)
-        //     route.push("/employee/internship_created")
-        // })
-        console.log(typeRef.current.value)
+        axios.post("http://localhost:5000/internship/create", {
+            company_id: token.id,
+            Internship_Name: nameRef.current.value,
+            Internship_type: type,
+            Location: locationRef.current.value,
+            Duration: durationRef.current.value,
+            start_date: startRef.current.value,
+            Stipend: stipendRef.current.value,
+            RequiredSkills: skillsRef.current.value,
+            whocanapply: whoRef.current.value,
+            perks: perksRef.current.value,
+            About_internship: aboutInternshipRef.current.value,
+            Additional_information: addinfoRef.current.value,
+            NoOfOpening: noofOpeningsRef.current.value
+        }).then((res) => {
+            route.push("/employee/internship_created")
+        })
+        console.log(type);
         formRef.current.reset()
     }
 
@@ -94,19 +91,17 @@ const post_internship = () => {
 
                         <div className="text-gray-700 flex space-x-10 border border-gray-300 p-2 rounded-md text-center">
                             <div className="space-x-1">
-                                <input type="radio" ref={typeRef} name="type" value="work from home" />
+                                <input type="radio" name="type" value="work_from_home" onChange={(e)=>setType(e.target.value)}/>
                                 <lable>work from home</lable>
                             </div>
                             <div className="space-x-1">
-                                <input type="radio" ref={typeRef} name="type" value="In-office"/>
+                                <input type="radio" name="type" value="In-office"  onChange={(e)=>setType(e.target.value)}/>
                                 <lable>In-office</lable>
                             </div>
                             <div className="space-x-1">
-                                <input type="radio" ref={typeRef} name="type" value="part-time" />
+                                <input type="radio" name="type" value="part-time"  onChange={(e)=>setType(e.target.value)}/>
                                 <lable>part-time</lable>
                             </div>
-
-
                         </div>
 
                         <div className="space-y-1">

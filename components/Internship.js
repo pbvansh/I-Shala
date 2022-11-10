@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 
 const Internship = ({ i }) => {
+    console.log(i);
     return (
 
         <div className="bg-white p-5 w-full space-y-5 border rounded-md shadow-lg ">
@@ -16,7 +17,7 @@ const Internship = ({ i }) => {
                 </Link>
                 <p className="text-gray-500 font-semibold cursor-pointer">{i.company_id ? i.company_id.Name : 'sp'}</p>
             </div>
-            { i.Location=='Work from home' ? 
+            { i.Internship_type==='work_from_home' ? 
                 <div className="flex space-x-1">
                     <HomeIcon className='h-5 w-5 text-gray-500' />
                     <p className='text-gray-700'>Work From Home</p>

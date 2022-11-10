@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import JWT from "jsonwebtoken"
+import Header from './Header';
 const Resume = () => {
     const[user,setUser] = useState([])
 
@@ -19,7 +20,7 @@ const Resume = () => {
     return (
         <>
             <div className="min-h-screen max-w-screen-lg mx-auto">
-            
+            <Header title={'My resume'}/>
                 <div className="justify-center flex mt-10">
                     <p className="text-gray-700 font-semibold text-2xl items-center justify-center">Resume</p>
                 </div>
