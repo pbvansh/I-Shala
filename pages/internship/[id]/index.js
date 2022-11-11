@@ -55,28 +55,28 @@ const Index = ({ internship,totalApplicants}) => {
                             </div>
                             :
                             <div className="flex space-x-1">
-                                <LocationMarkerIcon className='h-5 w-5 text-gray-500' />
+                                <LocationMarkerIcon className='h-5 w-5 text-red-500' />
                                 <p className='text-gray-700'>{internship.Location}</p>
                             </div>
                         }
                         <div className="flex space-x-10 text-sm">
                             <div className='space-x-1 space-y-1 '>
                                 <div className='flex text-gray-500 space-x-1'>
-                                    <PlayIcon className='h-5 w-5 ' />
+                                    <PlayIcon className='h-5 w-5 text-green-700 ' />
                                     <p className='font-semibold text-sm'>START DATE</p>
                                 </div>
                                 <p className='text-gray-800 text-base'>{internship.start_date}</p>
                             </div>
                             <div className='space-x-1 space-y-1'>
                                 <div className='flex text-gray-500 space-x-1'>
-                                    <CalendarIcon className='h-5 w-5' />
+                                    <CalendarIcon className='h-5 w-5  text-sky-600' />
                                     <p className='font-semibold text-sm'>DURATION</p>
                                 </div>
                                 <p className='text-gray-800 text-base'>{internship.Duration}</p>
                             </div>
                             <div className='space-x-1 space-y-1'>
                                 <div className='flex text-gray-500 space-x-1'>
-                                    <CurrencyRupeeIcon className='h-5 w-5 ' />
+                                    <CurrencyRupeeIcon className='h-5 w-5 text-gray-600' />
                                     <p className='font-semibold text-sm'>STIPEND</p>
                                 </div>
                                 <p className='text-gray-800 text-base'>{internship.Stipend}</p>
@@ -91,7 +91,7 @@ const Index = ({ internship,totalApplicants}) => {
                             <p className='bg-gray-200 border rounded-md text-gray-700 p-1 font-semibold'>Internship with job offer</p>
                         </div>
                         <div className='flex text-gray-600 space-x-2'>
-                            <UserGroupIcon className='h-5 w-5' />
+                            <UserGroupIcon className='h-5 w-5 text-sky-600' />
                             <p className='text-gray-500 font-semibold'>{totalApplicants} Applicants</p>
                         </div>
                         <hr></hr>
@@ -105,15 +105,15 @@ const Index = ({ internship,totalApplicants}) => {
                             </div>
                             <div className='flex space-x-12'>
                                 <div className='flex space-x-1 text-md text-gray-600'> 
-                                    <CalendarIcon className='h-5 w-5' />
+                                    <CalendarIcon className='h-6 w-6 text-blue-500' />
                                     <p>Hiring since December 2019</p>
                                 </div>
                                 <div className='flex space-x-1 text-md text-gray-600'>
-                                    <ClipboardCheckIcon className='h-5 w-5' />
+                                    <ClipboardCheckIcon className='h-6 w-6 text-green-700' />
                                     <p>3674 opportunities posted</p>
                                 </div>
                                 <div className='flex space-x-1 text-md text-gray-600'>
-                                    <UsersIcon className='w-5 h-5' />
+                                    <UsersIcon className='w-6 h-6 text-blue-500' />
                                     <p>10252 candidates hired</p>
                                 </div>
                             </div>

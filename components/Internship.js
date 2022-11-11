@@ -19,33 +19,35 @@ const Internship = ({ i }) => {
             </div>
             { i.Internship_type==='work_from_home' ? 
                 <div className="flex space-x-1">
-                    <HomeIcon className='h-5 w-5 text-gray-500' />
+                    <HomeIcon className='h-5 w-5  text-purple-400' />
                     <p className='text-gray-700'>Work From Home</p>
                 </div>
             :
                 <div className="flex space-x-1">
-                    <LocationMarkerIcon className='h-5 w-5 text-gray-500' />
+                    {/* <img src="location.png"/> */}
+                    <LocationMarkerIcon className='h-5 w-5 text-red-500' />
                     <p className='text-gray-700'>{i.Location}</p>
                 </div>
             }
             <div className="flex space-x-10 text-sm">
                 <div className='space-x-1 space-y-1 '>
                     <div className='flex text-gray-500 space-x-1'>
-                        <PlayIcon className='h-5 w-5 ' />
+                        <PlayIcon className='h-5 w-5 text-green-700' />
                         <p className='font-semibold text-sm'>START DATE</p>
                     </div>
                     <p className='text-gray-800 text-base'>{i.start_date}</p>
                 </div>
                 <div className='space-x-1 space-y-1'>
                     <div className='flex text-gray-500 space-x-1'>
-                        <CalendarIcon className='h-5 w-5' />
+                        <CalendarIcon className='h-5 w-5 text-sky-600' />
+                        {/* <img src="duration.jpg" className='h-10 w-10'/> */}
                         <p className='font-semibold text-sm'>DURATION</p>
                     </div>
                     <p className='text-gray-800 text-base'>{i.Duration}</p>
                 </div>
                 <div className='space-x-1 space-y-1'>
                     <div className='flex text-gray-500 space-x-1'>
-                        <CurrencyRupeeIcon className='h-5 w-5 ' />
+                        <CurrencyRupeeIcon className='h-5 w-5 text-gray-600' />
                         <p className='font-semibold text-sm'>STIPEND</p>
                     </div>
                     <p className='text-gray-800 text-base'>{i.Stipend}</p>

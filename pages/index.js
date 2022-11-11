@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import Header from "../components/Header";
 
 const index = () => {
-     <Header title={'I-Shala'}/>
+    
      const route = useRouter();
      const [isEmp,setIsEmp] = useRecoilState(isEmpState);
      useEffect(()=>{
