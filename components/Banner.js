@@ -7,6 +7,7 @@ const bannerUrl =[
   'https://raw.githubusercontent.com/SrikanthReddyBV/Internshala/master/src/public/images/get_set_intern_2021-1920-5bb08e.png',
   'https://raw.githubusercontent.com/SrikanthReddyBV/Internshala/master/src/public/images/learn_with_me-1920-5da5b0.png',
   'image.PNG',
+  'nb.jpg',
   'banner.PNG',
   'int.PNG',
   'https://raw.githubusercontent.com/SrikanthReddyBV/Internshala/master/src/public/images/social_issue_camapign_jul21-1920-b70cf7.png',
