@@ -3,6 +3,7 @@ import {
     PlayIcon, TrendingUpIcon, UserGroupIcon, UsersIcon
 } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
+import Header from '../../components/Header';
 
 const Review_internship = () => {
     const route = useRouter();
@@ -10,6 +11,7 @@ const Review_internship = () => {
     return (
         <div>
             <div className='p-8 justify-center text-center text-4xl mt-0'>
+                <Header title={'Review Internship'} />
                 <p className=' font-semibold text-gray-800'>{internship.Internship_Name} Internship At {internship.company_name}</p>
             </div>
             <div>

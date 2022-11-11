@@ -2,6 +2,7 @@ import { QuestionMarkCircleIcon, DocumentReportIcon } from "@heroicons/react/out
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Header from "./Header";
 
 const Application = ({ app }) => {
     const [applicants,setApplicants] = useState(0)
@@ -13,6 +14,7 @@ const Application = ({ app }) => {
     return (
         <>
             <div className="grid grid-cols-9 p-4">
+           
                 <p>{app.Internship_id?.company_id?.Name}</p>
                 <div className="flex flex-row col-span-2 justify-between pr-14">
                     <p>{app.Internship_id?.Internship_Name}</p>

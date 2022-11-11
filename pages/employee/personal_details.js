@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Header from "../../components/Header";
 
 
 const Personal_details = () => {
@@ -31,6 +32,7 @@ const Personal_details = () => {
     return (
         <>
             <div className="min-h-screen max-w-4xl mx-auto">
+                <Header title={'Personal Details'}/>
                 <div className="flex space-x-40 justify-center p-20">
                     <Link href="/employee/personal_details">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">

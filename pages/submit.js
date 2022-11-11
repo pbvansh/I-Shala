@@ -1,11 +1,13 @@
 // import {} from "@heroicons/react/outline"
 import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/outline";
+import Header from "../components/Header";
 const submit = () =>{
  
     return(
         <>
         <div className="min-h-screen max-w-screen-lg mx-auto mb-32 mt-24 border rounded-lg p-8 shadow-2xl">
+            <Header title={"Submit"}/>
             <div className="max-w-screen-lg mx-auto border rounded-md p-8 bg-green-100 flex justify-evenly shadow-lg">
            <img src="https://internshala.com/static/images/common/modal_success.svg" height={100} width={100}
             className="ml-12 justify-center" />

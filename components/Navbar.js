@@ -224,7 +224,7 @@ const Navbar = () => {
                             href="#"
                             className={classNames(
                               active ? ' text-gray-900' : 'text-gray-500',
-                              'block px-4 py-2 text-base font-semibold'
+                              'block px-4 py-2 text-base'
                             )}
                           >{
                               <div>
@@ -251,7 +251,7 @@ const Navbar = () => {
                               href="#"
                               className={classNames(
                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-500',
-                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50 font-semibold'
+                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50'
                               )}
                             >
                               {isEmp ? 'Dashboard' : 'My Applications'}
@@ -266,7 +266,7 @@ const Navbar = () => {
                               href="#"
                               className={classNames(
                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-500', 
-                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50 font-semibold'
+                                'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50'
                               )}
                             >
                               My Resume
@@ -281,7 +281,7 @@ const Navbar = () => {
                             href="#"
                             className={classNames(
                               active ? 'bg-gray-100 text-gray-900' : 'text-gray-500',
-                              'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50 font-semibold',
+                              'block px-4 py-2 text-base hover:text-sky-500 hover:bg-gray-50',
                             )} onClick={Logout}
                           >
                             Log out

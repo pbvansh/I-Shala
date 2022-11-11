@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {PencilIcon} from "@heroicons/react/outline"
 import Link from "next/link";
+import Header from "../../../../components/Header";
 
 const Review = () => {
     const route = useRouter();
@@ -23,6 +24,7 @@ const Review = () => {
     return (
         <>
             <div className="min-h-screen max-w-screen-lg mx-auto">
+              <Header title={'Cover letter | Resume'}/>
                 <div className="border border-gray-300 rounded-md mt-14">
                     <div className="bg-sky-100 border rounded-md border-gray-200 p-5 mt-0">
                         <p className="text-gray-900 text-4xl font-semibold">Application</p>

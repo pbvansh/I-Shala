@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import JWT from "jsonwebtoken"
+import Header from '../components/Header';
 const Resume = () => {
     const [user,setUser] = useState([])
     useEffect(()=>{
@@ -17,6 +18,7 @@ const Resume = () => {
     return (
         <>
             <div className="min-h-screen max-w-screen-lg mx-auto">
+                <Header title={'My Resume'} />
                 <div className="border border-sky-400 rounded-md p-5 mt-7 bg-sky-50 text-sky-600">
                     <p className="font-semibold">Applying to this Internship </p>
                     <div className="flex space-x-6">

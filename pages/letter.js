@@ -1,6 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRef } from "react";
+import Header from "../components/Header";
 const letter = () => {
 
     const coverRef = useRef();
@@ -17,7 +18,7 @@ const letter = () => {
     return (
         <>
             <div className="min-h-screen mx-auto max-w-screen-lg">
-
+             <Header title={'confirmation letter'}/>
                 <div className='p-8 justify-center text-center text-4xl mt-0'>
                     <p className=' font-semibold text-gray-800'> Internship Confirmation</p>
                 </div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isApplicationUpdatedState } from "../../atom/applicationAtom";
 import Applicant from "../../components/Applicant";
+import Header from "../../components/Header";
 import StatusModal from "../../components/StatusModal";
 
 const Applicants = ({ id }) => {
@@ -24,6 +25,7 @@ const Applicants = ({ id }) => {
       </div>
 
       <div className="border border-gray-300 rounded-md shadow-xl ">
+        <Header title={'Details of applicants'}/>
         <div className="grid grid-cols-6 text-gray-500 font-semibold  p-3  bg-gray-200 gap-5">
           <p>NO.</p>
           <p>STUDENT NAME</p>

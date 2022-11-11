@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRecoilState } from "recoil";
 import { loginState } from "../atom/loginAtom";
+import Header from "../components/Header";
 toast.configure();
 
 
@@ -81,6 +82,7 @@ const Auth = () => {
 
 
                 <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
+                <Header title={'Student Login | Registration'}/>
                     <div>
                         <p className="font-bold text-4xl flex">A
                             <span className="relative">

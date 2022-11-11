@@ -5,6 +5,7 @@ import React, { useRef, useState } from 'react'
 import { toast } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 import { loginState } from '../../atom/loginAtom';
+import Header from '../../components/Header';
 
 const employer = () => {
     // const [isLogin, setIsLogin] = useRecoilState(loginState)
@@ -48,6 +49,7 @@ const employer = () => {
                 }}
             >
                 <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
+                    <Header title={'Register as employee'}/>
                     <div>
                         <p className="font-bold text-4xl flex">
                             <span className="relative">

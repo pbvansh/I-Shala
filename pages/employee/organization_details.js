@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Router, { useRouter } from "next/router";
 import axios from "axios";
 import JWT from 'jsonwebtoken'
+import Header from "../../components/Header";
 const Organization_details = () => {
     const orgnameRef = useRef();
     const orgdetailRef = useRef();
@@ -25,6 +26,7 @@ const Organization_details = () => {
     return (
         <>
             <div className="min-h-screen max-w-4xl mx-auto relative">
+                <Header title={'Organization Details'} />
                 <div className="flex space-x-40 justify-center p-20">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
                         <Link href="/employee/personal_details">

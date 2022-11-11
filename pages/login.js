@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRecoilState } from "recoil";
 import { isEmpState, loginState } from "../atom/loginAtom";
+import Header from "../components/Header";
 toast.configure();
 
 
@@ -58,6 +59,7 @@ const Login = () =>{
 >
 
      <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
+        <Header title={'Login Student | Employee'}/>
                     <div className="space-y-7">
                         <p className="font-bold text-4xl flex text-gray-700 ">Let's Login in I-Shala</p>
                         <div className="space-y-4 text-4xl text-gray-700">

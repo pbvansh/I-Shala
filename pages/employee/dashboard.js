@@ -3,6 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import JWT from 'jsonwebtoken'
+import Header from "../../components/Header";
 
 const Dashboard = () => {
 
@@ -19,6 +20,7 @@ const Dashboard = () => {
     return (
         <>
             <div className="min-h-screen max-w-screen-md mx-auto">
+                <Header title={'Dashboard'}/>
                 <div>
                     <p className="font-semibold text-4xl p-12 text-center text-gray-700">My Internships</p>
                 </div>
