@@ -11,6 +11,28 @@ const Application = ({ app }) => {
          setApplicants(res.data)
         })
      },[])
+
+     const getInfo = (state)=>{
+        if(state=='Selected'){
+            return `congratulations you are selected for this role.please contact on this number or email \n. Email: ${app.Internship_id?.company_id?.email}.
+            Contact : ${app.Internship_id?.company_id?.Contact}`
+        }
+        else if(state=='Applied'){
+            return 'Applied successfully'
+        }
+        else if(state=='Seen'){
+            return 'Application seen by employer'
+        }
+        else if(state=='Pending'){
+            return 'Your application pandding at employer'
+        }
+        else if(state=='Not selected'){
+            return 'your are not selected for this role. Please applie on other internships'
+        }
+        else{
+            return 'more info'
+        }
+     }
     return (
         <>
             <div className="grid grid-cols-9 p-4">
@@ -27,9 +49,10 @@ const Application = ({ app }) => {
                 </div>
                 <p>{app.createdAt.split('T')[0]}</p>
                 <p>{applicants}</p>
-                <div className="flex space-x-1 col-span-2">
+                <div className="flex space-x-1 col-span-2 relative">
                     <p className="text-sky-500 bg-sky-50 font-semibold text-base border border-sky-100 rounded-full w-28 text-center">{app.application_status}</p>
-                    <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500" />
+                    <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500 cursor-pointer peer" />
+                    <span className="absolute text-sm invisible hover:visible peer-hover:visible rounded-md bg-black opacity-70 text-white z-10 border p-1 top-0 right-14">{getInfo(app.application_status)}</span>
                 </div>
                 <Link href={`../application/view/${app._id}`}>
                     <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
