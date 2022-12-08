@@ -1,5 +1,10 @@
+import { useState } from "react"
 
-const AddProjectModal = ({setProjectModal}) => {
+const AddProjectModal = ({ setProjectModal, projects, setProjects }) => {
+    const [project, setProject] = useState([])
+    const AddProject = () => {
+        setProjects([...projects, project])
+    }
     return (
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div
@@ -20,28 +25,48 @@ const AddProjectModal = ({setProjectModal}) => {
                                     <p className="text-2xl font-bold text-sky-500">Academic/ personal project</p>
                                     <div className="flex p-3 flex-col">
                                         <label className="font-semibold p-[5px] text-gray-700">Title</label>
-                                        <input type={'text'} placeholder='e.g. MyProjectTitle' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                                        <input defaultValue={project.title} onChange={(e) => {
+                                            setProject({
+                                                ...project, title: e.target.value
+                                            })
+                                        }} type={'text'} placeholder='e.g. MyProjectTitle' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                                     </div>
                                     <div className="flex p-3 space-x-5">
                                         <div className="flex  flex-col flex-1 text-gray-700">
                                             <label className="font-semibold p-[5px]">Start month</label>
-                                            <input type={'text'} placeholder='yyyy-mm' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                                            <input defaultValue={project.sMonth} onChange={(e) => {
+                                                setProject({
+                                                    ...project, sMonth: e.target.value
+                                                })
+                                            }} type={'text'} placeholder='yyyy-mm' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                                         </div>
                                         <div className="flex flex-col flex-1">
                                             <label className="font-semibold p-[5px] text-gray-700">End month</label>
-                                            <input type={'text'} placeholder='yyyy-mm' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                                            <input defaultValue={project.eMonth} onChange={(e) => {
+                                                setProject({
+                                                    ...project, eMonth: e.target.value
+                                                })
+                                            }} type={'text'} placeholder='yyyy-mm' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                                         </div>
                                     </div>
                                     <div className="flex p-3 flex-col">
                                         <label className="font-semibold p-[5px] text-gray-700">Description <span className="text-xs">(Optional)</span></label>
-                                        <textarea type={'text'} placeholder='Short description about project (max 250 char)' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                                        <textarea defaultValue={project.desc} onChange={(e) => {
+                                            setProject({
+                                                ...project, desc: e.target.value
+                                            })
+                                        }} type={'text'} placeholder='Short description about project (max 250 char)' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                                     </div>
                                     <div className="flex p-3 flex-col">
                                         <label className="font-semibold p-[5px] text-gray-700">Project link <span className="text-xs">(Optional)</span></label>
-                                        <input type={'text'} placeholder='e.g. http://myprojectlink.com ' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                                        <input defaultValue={project.link} onChange={(e) => {
+                                            setProject({
+                                                ...project, link: e.target.value
+                                            })
+                                        }} type={'text'} placeholder='e.g. http://myprojectlink.com ' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                                     </div>
                                     <div className="flex justify-end p-3">
-                                        <button className="p-2 px-8 bg-sky-500 text-lg text-white rounded-sm hover:bg-sky-600">Save</button>
+                                        <button onClick={AddProject} className="p-2 px-8 bg-sky-500 text-lg text-white rounded-sm hover:bg-sky-600">Save</button>
                                     </div>
                                 </div>
                             </div>
