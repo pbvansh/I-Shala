@@ -5,22 +5,26 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import JWT from "jsonwebtoken"
 import Header from './Header';
+import axios from 'axios';
 const Resume = () => {
-    const[user,setUser] = useState([])
-
-     useEffect(()=>{
-     const token = localStorage.getItem('i_shala_token')
-     const user = JWT.decode(token)
-    //  console.log(user);
-     setUser(user)
-     },[])
-
+    const [user, setUser] = useState([])
+    const [resume,setresume] = useState()
+    useEffect(() => {
+        const token = localStorage.getItem('i_shala_token')
+        const user = JWT.decode(token)
+        setUser(user);
+        axios.get('http://localhost:5000/resume/' + user.id).then((res) => {
+            console.log(res.data);
+            setresume(res.data[0]);
+            console.log(resume);
+        })
+    }, [])
     const router = useRouter()
     const internshipID = router.query.id;
     return (
         <>
             <div className="min-h-screen max-w-screen-lg mx-auto">
-            <Header title={'My resume'}/>
+                <Header title={'My resume'} />
                 <div className="justify-center flex mt-10">
                     <p className="text-gray-700 font-semibold text-2xl items-center justify-center">Resume</p>
                 </div>
@@ -84,8 +88,8 @@ const Resume = () => {
                             <div className='mt-4'>
                                 <p className='text-gray-800 font-semibold'>I-Shala</p>
                                 <p className='text-gray-500 font-semibold'>I-Shala is easy to use and provides Internships to student /users. It helps students to get Internships
-                                      In which they are interested. I use Node.js Express.js and MongoDB to build a complete backend and
-                                      I use MongoDB cloud database to store all the Informations.</p>
+                                    In which they are interested. I use Node.js Express.js and MongoDB to build a complete backend and
+                                    I use MongoDB cloud database to store all the Informations.</p>
                                 <div className='flex'>
                                     <span className='text-gray-800 font-semibold'>Technology used :</span>
                                     <p className='text-gray-500 font-semibold mx-2'>Node.js | Express.js | MongoDB</p>
@@ -103,7 +107,7 @@ const Resume = () => {
                     <div className='flex gap-x-44 mt-4'>
                         <p className='text-gray-500 font-semibold'>SKILLS</p>
                         <p className='text-gray-800 font-semibold'>JavaScript | Node.js | Express.js | React.js | Next.js | Tailwind CSS | MongoDB
-                             C | JAVA | C++ | ML | Postman | HTML | CSS | REST API | Python | .NET
+                            C | JAVA | C++ | ML | Postman | HTML | CSS | REST API | Python | .NET
                             Object Oriented Programming | GitHub</p>
 
                     </div>
@@ -115,11 +119,11 @@ const Resume = () => {
 
                     <hr className='mt-7'></hr>
                     <div className='flex gap-x-36 mt-7'>
-                    <p className='text-gray-500 font-semibold'>CERTIFICATE</p>
-                    {/* <p>Introduction to Web Development with HTML, CSS, JavaScript By IBM</p> */}
-                    <p>
-                    <a href="https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766" className='text-sky-500 hover:text-sky-600 font-semibold'>https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766</a>
-                    </p>
+                        <p className='text-gray-500 font-semibold'>CERTIFICATE</p>
+                        {/* <p>Introduction to Web Development with HTML, CSS, JavaScript By IBM</p> */}
+                        <p>
+                            <a href="https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766" className='text-sky-500 hover:text-sky-600 font-semibold'>https://coursera.org/share/6ea9ac81872479611bad6b7bc7771766</a>
+                        </p>
                     </div>
 
                 </div>
