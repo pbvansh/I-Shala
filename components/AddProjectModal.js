@@ -3,7 +3,8 @@ import { useState } from "react"
 const AddProjectModal = ({ setProjectModal, projects, setProjects }) => {
     const [project, setProject] = useState([])
     const AddProject = () => {
-        setProjects([...projects, project])
+        setProjects([...projects, project]);
+        setProjectModal(false);
     }
     return (
         <div className="fixed inset-0 z-10 overflow-y-auto">

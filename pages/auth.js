@@ -1,14 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useRecoilState } from "recoil";
 import { loginState } from "../atom/loginAtom";
 import Header from "../components/Header";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
-
-
 
 const Auth = () => {
 
@@ -33,13 +31,13 @@ const Auth = () => {
             Contact: contactRef.current.value,
             firstName: fnameRef.current.value,
             lastName: lnameRef.current.value
-            
+
         }).then((res) => {
             console.log(res.data)
-            toast("Signup Successfull",{autoClose : 1500,position : "bottom-right"})
+            toast("Signup Successfull", { autoClose: 1500, position: "bottom-right" })
             setLoginSignup(false)
         })
-       
+
         formRef.current.reset();
     }
 
@@ -52,16 +50,16 @@ const Auth = () => {
             password: LpasswordRef.current.value
         }).then((res) => {
             setIsLogin(true)
-            localStorage.setItem('i_shala_token',res.data.token);
-            localStorage.setItem('i_shala_user_email',res.data.email)
-            localStorage.setItem('i_shala_user_fname',res.data.Fname)
-            localStorage.setItem('i_shala_isAuth',res.data.isAuth)
-           route.push("/student/applications")
-           toast("Login Successfull",{autoClose : 1500,position : "bottom-right"})
-        }).catch((e)=>{
+            localStorage.setItem('i_shala_token', res.data.token);
+            localStorage.setItem('i_shala_user_email', res.data.email)
+            localStorage.setItem('i_shala_user_fname', res.data.Fname)
+            localStorage.setItem('i_shala_isAuth', res.data.isAuth)
+            route.push("/student/applications")
+            toast("Login Successfull", { autoClose: 1500, position: "bottom-right" })
+        }).catch((e) => {
             console.log(e)
         })
-       
+
         formRef.current.reset();
     }
 
@@ -76,13 +74,15 @@ const Auth = () => {
         <>
 
             <form className="min-h-screen relative " ref={formRef}
-                style={{ backgroundImage: "url('backg.jpg')",
-                 backgroundRepeat: "no-repeat" , backgroundSize : "1500px"}}
+                style={{
+                    backgroundImage: "url('backg.jpg')",
+                    backgroundRepeat: "no-repeat", backgroundSize: "1500px"
+                }}
             >
 
 
                 <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
-                <Header title={'Student Login | Registration'}/>
+                    <Header title={'Student Login | Registration'} />
                     <div>
                         <p className="font-bold text-4xl flex">A
                             <span className="relative">
@@ -145,7 +145,7 @@ const Auth = () => {
                                 <div className="justify-center space-y-5">
                                     <p className="text-sm justify-center">By signing up, you agree to our <span className="text-sky-500 font-semibold text-sm cursor-pointer hover:text-sky-600">Terms and Conditions.</span></p>
                                     <button className="bg-sky-500 text-xl font-semibold text-white border rounded-md cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg" onClick={userReg}>Sign up</button>
-                                    
+
                                 </div>
                                 <div className="flex justify-center">
                                     <p>Already registered?<span className="p-2 font-semibold text-sky-500 cursor-pointer hover:text-sky-600" onClick={() => setLoginSignup(false)}>Login</span></p>

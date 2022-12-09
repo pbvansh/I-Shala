@@ -5,6 +5,9 @@ import {
 } from '@heroicons/react/solid';
 import axios from "axios";
 import JWT from 'jsonwebtoken'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
 
 const Resume = () => {
     const [projectModal, setProjectModal] = useState(false)
@@ -24,12 +27,25 @@ const Resume = () => {
     const [certificateArray, setCertificateArray] = useState([])
     const [works, setWorks] = useState([])
     const [user_id, setUserId] = useState(null)
+    const [resume, setResume] = useState({})
 
     useEffect(() => {
         const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
         setUserId(id);
-        axios.get('http://localhost:5000/resume/'+id).then((res) => {
-            console.log(res.data);
+        axios.get('http://localhost:5000/resume/' + id).then((res) => {
+            setResume(res.data[0]);
+            setFName(res.data[0]?.Fname)
+            setLName(res.data[0]?.Lname)
+            setEmail(res.data[0]?.email)
+            setCertificate(res.data[0]?.certificate)
+            setContact(res.data[0]?.contact)
+            setAddress(res.data[0]?.address)
+            setEducation(res.data[0]?.education)
+            setSkills(res.data[0]?.skills)
+            setPortfolio_or_works(res.data[0]?.Portfolio_or_works)
+            setAccomplishments(res.data[0]?.Accomplishments)
+            setProjects(res.data[0]?.projects)
+
         })
     }, [])
 
@@ -40,8 +56,7 @@ const Resume = () => {
         setSkillsArray(splitedSkills)
         setCertificateArray(splitedCerti)
         setWorks(splitedWorks)
-        console.log(projects);
-        axios.post('http://localhost:5000/resume/', {
+        axios.post('http://localhost:5000/resume/' + user_id, {
             user_id,
             Fname,
             Lname,
@@ -55,7 +70,9 @@ const Resume = () => {
             Portfolio_or_works,
             Accomplishments
         }).then((res) => {
-            console.log(res.data);
+            if (res.data.acknowledged) {
+                toast.success('Resume saved successfully', { autoClose: 2000 })
+            }
         })
     }
 
@@ -64,15 +81,15 @@ const Resume = () => {
             <p className="text-center font-bold text-4xl p-5">Your Resume</p>
             <div>
                 <div className="flex p-3 space-x-10">
-                    <input defaultValue={Fname} onChange={(e) => setFName(e.target.value)} type={'text'} placeholder='First Name' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
-                    <input defaultValue={Lname} onChange={(e) => setLName(e.target.value)} type={'text'} placeholder='Last Name' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <input defaultValue={resume?.Fname} onChange={(e) => setFName(e.target.value)} type={'text'} placeholder='First Name' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <input defaultValue={resume?.Lname} onChange={(e) => setLName(e.target.value)} type={'text'} placeholder='Last Name' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
                 <div className="flex p-3 space-x-10">
-                    <input defaultValue={email} onChange={(e) => setEmail(e.target.value)} type={'text'} placeholder='Email - xyz@gmail.com' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
-                    <input defaultValue={contact} onChange={(e) => setContact(e.target.value)} type={'text'} placeholder='Mobile No.' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <input defaultValue={resume?.email} onChange={(e) => setEmail(e.target.value)} type={'text'} placeholder='Email - xyz@gmail.com' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <input defaultValue={resume?.contact} onChange={(e) => setContact(e.target.value)} type={'text'} placeholder='Mobile No.' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
                 <div className="flex p-3">
-                    <textarea defaultValue={address} onChange={(e) => setAddress(e.target.value)} placeholder="Enter your address" className="flex-1 focus:outline-none border focus:border-sky-500 p-2" />
+                    <textarea defaultValue={resume?.address} onChange={(e) => setAddress(e.target.value)} placeholder="Enter your address" className="flex-1 focus:outline-none border focus:border-sky-500 p-2" />
                 </div>
             </div>
             <hr />
@@ -80,32 +97,32 @@ const Resume = () => {
                 <p className="text-2xl font-bold text-sky-500">Graduation details</p>
                 <div className="flex p-3 flex-col">
                     <label className="font-bold p-[5px] text-gray-700">College</label>
-                    <input defaultValue={education?.college} onChange={(e) => {
+                    <input defaultValue={resume?.education?.college} onChange={(e) => {
                         setEducation({ ...education, college: e.target.value })
                     }} type={'text'} placeholder='e.g. Hindu College' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
                 <div className="flex p-3 flex-col">
                     <label className="font-bold p-[5px] text-gray-700">Degree</label>
-                    <input defaultValue={education?.degree} onChange={(e) => {
+                    <input defaultValue={resume?.education?.degree} onChange={(e) => {
                         setEducation({ ...education, degree: e.target.value })
                     }} type={'text'} placeholder='e.g. B.Sc' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
                 <div className="flex p-3 space-x-5">
                     <div className="flex  flex-col flex-1 text-gray-700">
                         <label className="font-bold p-[5px]">Start year</label>
-                        <input defaultValue={education?.sDate} onChange={(e) => {
+                        <input defaultValue={resume?.education?.sDate} onChange={(e) => {
                             setEducation({ ...education, sDate: e.target.value })
                         }} type={'text'} placeholder='Choose Your' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                     </div>
                     <div className="flex flex-col flex-1">
                         <label className="font-bold p-[5px] text-gray-700">End year</label>
-                        <input defaultValue={education?.eDate} onChange={(e) => {
+                        <input defaultValue={resume?.education?.eDate} onChange={(e) => {
                             setEducation({ ...education, eDate: e.target.value })
                         }} type={'text'} placeholder='Choose Your' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                     </div>
                     <div className="flex flex-col flex-1">
                         <label className="font-bold p-[5px] text-gray-700">Performance</label>
-                        <input defaultValue={education?.gPoint} onChange={(e) => {
+                        <input defaultValue={resume?.education?.gPoint} onChange={(e) => {
                             setEducation({ ...education, gPoint: e.target.value })
                         }} type={'text'} placeholder='0.00 (GP/10)' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                     </div>
@@ -167,7 +184,7 @@ const Resume = () => {
                 </div>
                 <div className="flex p-3 flex-col">
                     <label className="font-bold p-[5px] text-gray-700">Add skills</label>
-                    <textarea defaultValue={skills} onChange={(e) => setSkills(e.target.value)} type={'text'} placeholder='e.g. C++,Java,PHP,etc...' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <textarea defaultValue={resume?.skills} onChange={(e) => setSkills(e.target.value)} type={'text'} placeholder='e.g. C++,Java,PHP,etc...' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
             </div>
             <hr />
@@ -182,7 +199,7 @@ const Resume = () => {
                 </div>
                 <div className="flex p-3 flex-col">
                     <label className="font-bold p-[5px] text-gray-700">Add Certificate</label>
-                    <textarea defaultValue={certificate} onChange={(e) => setCertificate(e.target.value)} multiline={true} type={'text'} placeholder={'Put certificate link here like this \nABC,\nXYZ,\nETC...'} className="flex-1 min-h-[120px] whitespace-pre-line rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <textarea defaultValue={resume?.certificate} onChange={(e) => setCertificate(e.target.value)} multiline={true} type={'text'} placeholder={'Put certificate link here like this \nABC,\nXYZ,\nETC...'} className="flex-1 min-h-[120px] whitespace-pre-line rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
             </div>
             <hr />
@@ -197,7 +214,7 @@ const Resume = () => {
                 </div>
                 <div className="flex p-3 flex-col">
                     <label className="font-bold p-[5px] text-gray-700">Add work samples</label>
-                    <textarea defaultValue={Portfolio_or_works} onChange={(e) => setPortfolio_or_works(e.target.value)} type={'text'} placeholder='e.g. C++,Java,PHP,etc...' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <textarea defaultValue={resume?.Portfolio_or_works} onChange={(e) => setPortfolio_or_works(e.target.value)} type={'text'} placeholder='e.g. C++,Java,PHP,etc...' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
             </div>
             <hr />
@@ -208,7 +225,7 @@ const Resume = () => {
                 </div>
                 <div className="flex p-3 flex-col">
                     <label className="font-bold p-[5px] text-gray-700">Additional details</label>
-                    <textarea defaultValue={Accomplishments} onChange={(e) => setAccomplishments(e.target.value)} type={'text'} placeholder='Write anything' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
+                    <textarea defaultValue={resume?.Accomplishments} onChange={(e) => setAccomplishments(e.target.value)} type={'text'} placeholder='Write anything' className="flex-1 rounded-sm p-2 focus:outline-none border focus:border-sky-500" />
                 </div>
             </div>
             {
