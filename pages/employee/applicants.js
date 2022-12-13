@@ -26,7 +26,7 @@ const Applicants = ({ id }) => {
 
       <div className="border border-gray-300 rounded-md shadow-xl ">
         <Header title={'Details of applicants'}/>
-        <div className="grid grid-cols-6 text-gray-500 font-semibold  p-3  bg-gray-200 gap-5">
+        <div className="grid grid-cols-6 text-gray-500 font-semibold  p-3  bg-gray-100 gap-5">
           <p>NO.</p>
           <p>STUDENT NAME</p>
           <p>APPLIED ON</p>
