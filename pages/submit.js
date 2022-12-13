@@ -9,7 +9,8 @@ const submit = () =>{
         <div className="min-h-screen max-w-screen-lg mx-auto mb-32 mt-24 border rounded-lg p-8 shadow-2xl">
             <Header title={"Submit"}/>
             <div className="max-w-screen-lg mx-auto border rounded-md p-8 bg-green-100 flex justify-evenly shadow-lg">
-           <img src="https://internshala.com/static/images/common/modal_success.svg" height={100} width={100}
+           <img src="https://internshala.com/static/images/info/about_us/vision/trainings-r575.svg" height={100} width={100}
+            // https://internshala.com/static/images/info/about_us/vision/internships-r575.svg
             className="ml-12 justify-center" />
             <div>
                 <p className="text-gray-700 font-semibold text-4xl mt-6">Your application has been submitted!</p>
