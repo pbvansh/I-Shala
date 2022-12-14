@@ -55,7 +55,7 @@ const Resume = () => {
                         <p className='text-gray-500 font-semibold text-sm'>PERSONAL PROJECTS</p>
                         <div>
                             {
-                                resume?.projects.map((pro ,i) => (
+                                resume?.projects.map((pro, i) => (
                                     <div key={i} className='mt-4'>
                                         <p className='text-gray-800 font-semibold'>{pro.title}</p>
                                         <p className='text-gray-500 font-semibold'>{pro.desc}</p>
@@ -77,8 +77,8 @@ const Resume = () => {
                         <p className='text-gray-500 font-semibold'>SKILLS</p>
                         <div className='grid grid-cols-3 justify-evenly w-full'>
                             {
-                                resume.skills.split(',').map((s) => (
-                                    <p className='text-gray-800 font-semibold border m-2 p-2 rounded-md text-center hover:shadow-lg hover:scale-105 duration-300 cursor-pointer'>{s}</p>
+                                resume.skills.split(',').map((s,i) => (
+                                    <p key={i} className='text-gray-800 font-semibold border m-2 p-2 rounded-md text-center hover:shadow-lg hover:scale-105 duration-300 cursor-pointer'>{s}</p>
                                 ))
                             }
                         </div>
@@ -89,8 +89,8 @@ const Resume = () => {
                         <p className='text-gray-500 font-semibold'>WORK SAMPLES</p>
                         <div>
                             {
-                                resume.Portfolio_or_works.split(',').map((w) => (
-                                    <a href={w} className='text-sky-500 hover:text-sky-600 font-semibold block m-1'>{w}</a>
+                                resume.Portfolio_or_works.split(',').map((w,i) => (
+                                    <a key={i} href={w} className='text-sky-500 hover:text-sky-600 font-semibold block m-1'>{w}</a>
                                 ))
                             }
                         </div>
@@ -102,8 +102,8 @@ const Resume = () => {
                         <div>
 
                             {
-                                resume.certificate.split(',').map((c) => (
-                                    <a href={c} className='text-sky-500 hover:text-sky-600 font-semibold block m-1'>{c}</a>
+                                resume.certificate.split(',').map((c,i) => (
+                                    <a key={i} href={c} className='text-sky-500 hover:text-sky-600 font-semibold block m-1'>{c}</a>
                                 ))
                             }
                         </div>
