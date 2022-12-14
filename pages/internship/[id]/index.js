@@ -210,6 +210,6 @@ export async function getStaticPaths() {
     const paths = ids.map(id => ({ params: { id: id.toString() } }))
     return {
         paths,
-        fallback: false
+        fallback: 'blocking'
     }
 }
