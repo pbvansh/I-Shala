@@ -1,9 +1,9 @@
 import React from 'react'
-import Resume from '../../components/Resume'
+import ResumeComp from '../../components/ResumeComp'
 
 function Myresume() {
   return (
-   <Resume/>
+   <ResumeComp/>
   )
 }
 

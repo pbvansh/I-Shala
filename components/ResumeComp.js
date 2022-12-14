@@ -29,7 +29,7 @@ const Resume = () => {
                     <div className='space-y-1'>
                         <div className='flex space-x-2'>
                             <p className="text-4xl text-gray-700 font-semibold">{resume.Fname} {resume.Lname}</p>
-                            <Link href={'/student/resume'}>
+                            <Link href={'/student/edit_resume'}>
                                 <PencilIcon className='h-7 w-7 cursor-pointer' />
                             </Link>
                         </div>
