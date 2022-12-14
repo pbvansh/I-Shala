@@ -1,7 +1,6 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react"
-import Application from "../../components/Application";
 import JWT from 'jsonwebtoken'
 import Header from "../../components/Header";
 

@@ -7,7 +7,7 @@ import { useRecoilState } from 'recoil';
 import { loginState } from '../../atom/loginAtom';
 import Header from '../../components/Header';
 
-const employer = () => {
+const Employer = () => {
     // const [isLogin, setIsLogin] = useRecoilState(loginState)
 
     const emailRef = useRef();
@@ -128,4 +128,4 @@ const employer = () => {
     );
 }
 
-export default employer
+export default Employer
