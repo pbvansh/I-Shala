@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import JWT from 'jsonwebtoken'
 import Header from "../../components/Header";
+import ApplicationComp from "../../components/ApplicationComp";
 
 const Application = () => {
 
@@ -10,7 +11,7 @@ const Application = () => {
 
     useEffect(() => {
         const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.get("http://localhost:5000/application/app/" + id).then((res) => {
+        axios.get("https://I-Shalabackend.pratikvansh.repl.co/application/app/" + id).then((res) => {
             setapp(res.data);
             console.log(res.data);
         }).catch((ex) => {
@@ -37,7 +38,7 @@ const Application = () => {
                         </div>
                         {
                             app.map((app, i) => (
-                                <Application key={i} app={app} />
+                                <ApplicationComp key={i} app={app} />
                             ))
                         }
                     </div>

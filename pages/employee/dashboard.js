@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [internship, setInternship] = useState([])
     useEffect(() => {
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.get(`http://localhost:5000/company/${token.id}/internship`).then((res) => {
+        axios.get(`https://I-Shalabackend.pratikvansh.repl.co/company/${token.id}/internship`).then((res) => {
             console.log(res.data);
             setInternship(res.data)
         }).catch((e) => {

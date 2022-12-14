@@ -32,7 +32,7 @@ const Resume = () => {
     useEffect(() => {
         const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
         setUserId(id);
-        axios.get('http://localhost:5000/resume/' + id).then((res) => {
+        axios.get('https://I-Shalabackend.pratikvansh.repl.co/resume/' + id).then((res) => {
             setResume(res.data[0]);
             setFName(res.data[0]?.Fname)
             setLName(res.data[0]?.Lname)
@@ -56,7 +56,7 @@ const Resume = () => {
         setSkillsArray(splitedSkills)
         setCertificateArray(splitedCerti)
         setWorks(splitedWorks)
-        axios.post('http://localhost:5000/resume/' + user_id, {
+        axios.post('https://I-Shalabackend.pratikvansh.repl.co/resume/' + user_id, {
             user_id,
             Fname,
             Lname,

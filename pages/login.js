@@ -24,8 +24,8 @@ const Login = () =>{
         e.preventDefault()
 
         const getUrl = () => {
-            if(isStudent) return "http://localhost:5000/user/login";
-            else return "http://localhost:5000/company/login";
+            if(isStudent) return "https://I-Shalabackend.pratikvansh.repl.co/user/login";
+            else return "https://I-Shalabackend.pratikvansh.repl.co/company/login";
         }
         axios.post( getUrl(), {
             email: LemailRef.current.value,

@@ -39,7 +39,7 @@ const StatusModal = ({ setshowStatusModal }) => {
                                             <button key={i} onClick={() => {
                                                 if (i > idx) {
                                                     setPreStatus(item);
-                                                    axios.put(`http://localhost:5000/application/updateapp/${applicationIdforUpdate}`,
+                                                    axios.put(`https://I-Shalabackend.pratikvansh.repl.co/application/updateapp/${applicationIdforUpdate}`,
                                                         { application_status: item }).then((res) => {
                                                             setIsUpdated(!isUpdated);
                                                         })

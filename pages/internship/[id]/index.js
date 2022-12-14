@@ -191,8 +191,8 @@ export default Index
 
 export async function getStaticProps(context) {
     const { id } = context.params;
-    const res = await axios.get('http://localhost:5000/internship/' + id);
-    const {data} = await axios.get(`http://localhost:5000/application/${id}/totalApplicant`)
+    const res = await axios.get('https://I-Shalabackend.pratikvansh.repl.co/internship/' + id);
+    const {data} = await axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${id}/totalApplicant`)
     const internship = res.data;
     return {
         props: {
@@ -204,7 +204,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    const res = await axios.get('http://localhost:5000/internship');
+    const res = await axios.get('https://I-Shalabackend.pratikvansh.repl.co/internship');
     const internship = res.data;
     const ids = internship.map((inter) => inter._id);
     const paths = ids.map(id => ({ params: { id: id.toString() } }))

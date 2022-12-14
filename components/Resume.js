@@ -11,7 +11,7 @@ const Resume = () => {
     useEffect(() => {
         const token = localStorage.getItem('i_shala_token')
         const user = JWT.decode(token)
-        axios.get('http://localhost:5000/resume/' + user.id).then((res) => {
+        axios.get('https://I-Shalabackend.pratikvansh.repl.co/resume/' + user.id).then((res) => {
             console.log(res.data);
             setresume(res.data[0]);
         })

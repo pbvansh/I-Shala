@@ -13,7 +13,7 @@ const Review = () => {
     const [app, setApp] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/application/cov/${id}`).then((res) => {
+        axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/cov/${id}`).then((res) => {
             setApp(res.data);
             console.log(res.data);
         }).catch((ex) => {

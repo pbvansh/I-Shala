@@ -26,7 +26,7 @@ const Post_internship = () => {
     const createInternship = (e) => {
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.post("http://localhost:5000/internship/create", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/internship/create", {
             company_id: token.id,
             Internship_Name: nameRef.current.value,
             Internship_type: type,

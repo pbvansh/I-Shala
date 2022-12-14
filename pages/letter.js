@@ -10,7 +10,7 @@ const Letter = () => {
     const createLetter = (e) => {
         e.preventDefaulit();
         console.log(coverRef.current.value, assRef.current.value)
-        axios.post("http://localhost:5000/application/createapp", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/application/createapp", {
             cover_letter: coverRef.current
         })
     }

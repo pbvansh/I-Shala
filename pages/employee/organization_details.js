@@ -14,7 +14,7 @@ const Organization_details = () => {
     const orgDetail = (e) => {
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.put(`http://localhost:5000/company/${token.id}/update`, {
+        axios.put(`https://I-Shalabackend.pratikvansh.repl.co/company/${token.id}/update`, {
             Name: orgnameRef.current.value,
             About_company: orgdetailRef.current.value,
             // website_URL: urlRef.current.value

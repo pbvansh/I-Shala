@@ -22,7 +22,7 @@ const Add = () => {
         console.log(nameRef.current.value,locationRef.current.value,durationRef.current.value,
             startRef.current.value,stipendRef.current.value,skillsRef.current.value,whoRef.current.value,
             perksRef.current.value,addInfoRef.current.value,noofOpeningsRef.current.value,isLiveRef.current.value);
-        axios.post('http://localhost:5000/internship/create',{
+        axios.post('https://I-Shalabackend.pratikvansh.repl.co/internship/create',{
             Internship_Name : nameRef.current.value ,
             Location :  locationRef.current.value,
             company_id : "632d2349bf18c8869f03ae24" ,
