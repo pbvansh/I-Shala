@@ -61,7 +61,7 @@ const Login = () =>{
      <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
         <Header title={'Login Student | Employee'}/>
                     <div className="space-y-7">
-                        <p className="font-bold text-4xl flex text-gray-700 ">Let's Login in I-Shala</p>
+                        <p className="font-bold text-4xl flex text-gray-700 ">Let&apos;s Login in I-Shala</p>
                         <div className="space-y-4 text-4xl text-gray-700">
                              <p className="font-semibold text-2xl p-4">Get ahead.Get an Internship!</p> 
 

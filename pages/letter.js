@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRef } from "react";
 import Header from "../components/Header";
-const letter = () => {
+const Letter = () => {
 
     const coverRef = useRef();
     const assRef = useRef();
@@ -82,5 +82,5 @@ const letter = () => {
 
 }
 
-export default letter
+export default Letter
 

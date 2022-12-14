@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Internship from "../components/Internship";
 const data = Array(10).fill(1)
 
-const internships = () => {
+const Internships = () => {
 
     const [intern, setIntern] = useState([]);
     const [location, setLocation] = useState('');
@@ -111,4 +111,4 @@ const internships = () => {
     );
 }
 
-export default internships
+export default Internships

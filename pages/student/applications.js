@@ -5,7 +5,7 @@ import Application from "../../components/Application";
 import JWT from 'jsonwebtoken'
 import Header from "../../components/Header";
 
-const application = () => {
+const Application = () => {
 
     const [app, setapp] = useState([]);
 
@@ -48,4 +48,4 @@ const application = () => {
     );
 }
 
-export default application
+export default Application

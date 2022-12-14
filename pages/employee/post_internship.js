@@ -6,7 +6,7 @@ import JWT from 'jsonwebtoken'
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
 
-const post_internship = () => {
+const Post_internship = () => {
 
     const [type,setType] = useState(null);
     const nameRef = useRef();
@@ -227,4 +227,4 @@ const post_internship = () => {
     )
 }
 
-export default post_internship
+export default Post_internship

@@ -122,7 +122,7 @@ const Index = ({ internship,totalApplicants}) => {
                             <p className='text-gray-800 font-semibold text-xl'>
                                 About the internship
                             </p>
-                            <p className='text-gray-600 font-semibold'>Selected intern's day-to-day responsibilities include:</p>
+                            <p className='text-gray-600 font-semibold'>Selected intern&apos;s day-to-day responsibilities include:</p>
                         </div>
                         <div className='text-gray-600 font-normal'>
 
