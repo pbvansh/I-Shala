@@ -55,8 +55,8 @@ const Resume = () => {
                         <p className='text-gray-500 font-semibold text-sm'>PERSONAL PROJECTS</p>
                         <div>
                             {
-                                resume?.projects.map((pro) => (
-                                    <div className='mt-4'>
+                                resume?.projects.map((pro ,i) => (
+                                    <div key={i} className='mt-4'>
                                         <p className='text-gray-800 font-semibold'>{pro.title}</p>
                                         <p className='text-gray-500 font-semibold'>{pro.desc}</p>
                                         {/* <div className='flex'>

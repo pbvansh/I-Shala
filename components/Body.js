@@ -134,8 +134,8 @@ const Body = () => {
                 <div className="space-y-16">
                     <div className="flex m-2 cursor-pointer ">
                         {
-                            cities.map((obj) => (
-                                <div className="p-3 hover:shadow-2xl">
+                            cities.map((obj,i) => (
+                                <div key={i} className="p-3 hover:shadow-2xl">
                                     <img src={obj.url} />
                                     <p className="text-center font-semibold hover:text-sky-700">{obj.Name}</p>
 
