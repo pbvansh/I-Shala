@@ -80,7 +80,7 @@ function Footer() {
             <img src="https://cdn.cdnlogo.com/logos/t/96/twitter-icon.svg"
               height={20} width={30} className="p-1 hover:cursor-pointer rounded-full bg-black"
             />
-            <img src="mail.png" height={30} width={25} className="ml-3"/>
+            <img src="mail.png" height={30} width={25} className="ml-3 hover:cursor-pointer"/>
           </div>
         </div>
 
