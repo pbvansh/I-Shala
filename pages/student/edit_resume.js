@@ -33,19 +33,20 @@ const Resume = () => {
         const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
         setUserId(id);
         axios.get('https://I-Shalabackend.pratikvansh.repl.co/resume/' + id).then((res) => {
-            setResume(res.data[0]);
-            setFName(res.data[0]?.Fname)
-            setLName(res.data[0]?.Lname)
-            setEmail(res.data[0]?.email)
-            setCertificate(res.data[0]?.certificate)
-            setContact(res.data[0]?.contact)
-            setAddress(res.data[0]?.address)
-            setEducation(res.data[0]?.education)
-            setSkills(res.data[0]?.skills)
-            setPortfolio_or_works(res.data[0]?.Portfolio_or_works)
-            setAccomplishments(res.data[0]?.Accomplishments)
-            setProjects(res.data[0]?.projects)
-
+            if (res.data.length > 0) {
+                setResume(res.data[0]);
+                setFName(res.data[0]?.Fname)
+                setLName(res.data[0]?.Lname)
+                setEmail(res.data[0]?.email)
+                setCertificate(res.data[0]?.certificate)
+                setContact(res.data[0]?.contact)
+                setAddress(res.data[0]?.address)
+                setEducation(res.data[0]?.education)
+                setSkills(res.data[0]?.skills)
+                setPortfolio_or_works(res.data[0]?.Portfolio_or_works)
+                setAccomplishments(res.data[0]?.Accomplishments)
+                setProjects(res.data[0]?.projects)
+            }
         })
     }, [])
 
@@ -72,6 +73,11 @@ const Resume = () => {
         }).then((res) => {
             if (res.data.acknowledged) {
                 toast.success('Resume saved successfully', { autoClose: 2000 })
+            }
+        }).catch((e)=>{
+            console.log(e.response.status);
+            if(e.response.status == 500){
+                toast.warning('Invalid Details', { autoClose: 2000 })
             }
         })
     }
@@ -133,7 +139,7 @@ const Resume = () => {
                 <p className="text-2xl font-semibold text-sky-500">Academic/ personal project</p>
                 <div>
                     {
-                        projects.map((p, i) => (
+                        projects?.map((p, i) => (
                             <div key={i} className="border p-3 m-5 rounded-md shadow-md">
                                 <p className="font-semibold">{p.title}</p>
                                 <p>{p.sMonth} - {p.eMonth}</p>
@@ -177,7 +183,7 @@ const Resume = () => {
                 <p className="text-2xl font-semibold text-sky-500">Skills</p>
                 <div className="flex mt-2 p-3">
                     {
-                        skillsArray.map((s, i) => s.trim() !== '' && (
+                        skillsArray?.map((s, i) => s.trim() !== '' && (
                             <p key={i} className=" px-2 p-1 rounded-sm border m-1">{s}</p>
                         ))
                     }
@@ -192,7 +198,7 @@ const Resume = () => {
                 <p className="text-2xl font-semibold text-sky-500">Certificate</p>
                 <div className="flex mt-2 p-3">
                     {
-                        certificateArray.map((c, i) => c.trim() !== '' && (
+                        certificateArray?.map((c, i) => c.trim() !== '' && (
                             <p key={i} className=" px-2 p-1 rounded-sm border m-1">{c}</p>
                         ))
                     }
@@ -207,7 +213,7 @@ const Resume = () => {
                 <p className="text-2xl font-semibold text-sky-500">portfolio /work samples</p>
                 <div className="flex mt-2 p-3">
                     {
-                        works.map((w, i) => w.trim() !== '' && (
+                        works?.map((w, i) => w.trim() !== '' && (
                             <p key={i} className=" px-2 p-1 rounded-sm border m-1">{w}</p>
                         ))
                     }

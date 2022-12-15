@@ -2,6 +2,7 @@ import { useState } from "react"
 
 const AddProjectModal = ({ setProjectModal, projects, setProjects }) => {
     const [project, setProject] = useState([])
+    console.log(projects.length);
     const AddProject = () => {
         setProjects([...projects, project]);
         setProjectModal(false);

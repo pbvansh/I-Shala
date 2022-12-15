@@ -1,13 +1,12 @@
 
 import { PencilIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import JWT from "jsonwebtoken"
 import Header from './Header';
 import axios from 'axios';
 const Resume = () => {
-    const [resume, setresume] = useState(null)
+    const [resume, setresume] = useState(null);
     useEffect(() => {
         const token = localStorage.getItem('i_shala_token')
         const user = JWT.decode(token)
@@ -17,6 +16,16 @@ const Resume = () => {
         })
     }, [])
 
+    // const PrintResume = () => {
+    //     var prtresume = document.getElementById('resume');
+    //     var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+    //     WinPrint.document.write(prtresume.innerHTML);
+    //     WinPrint.document.close();
+    //     WinPrint.focus();
+    //     WinPrint.print();
+    //     WinPrint.close();
+    // }
+
     return (
         <> {resume ?
             <div className="min-h-screen max-w-screen-lg mx-auto">
@@ -25,7 +34,7 @@ const Resume = () => {
                     <p className="text-gray-700 font-semibold text-2xl items-center justify-center">Resume</p>
                 </div>
 
-                <div className="border border-gray-300 rounded-md mt-6 mb-8 p-16">
+                <div className="border border-gray-300 rounded-md mt-6 mb-8 p-16" id='resume'>
                     <div className='space-y-1 mb-5'>
                         <div className='flex space-x-2'>
                             <p className="text-4xl text-gray-700 font-semibold">{resume.Fname} {resume.Lname}</p>
@@ -38,6 +47,7 @@ const Resume = () => {
                             <p>{resume.contact}</p>
                             <p>{resume.address}</p>
                         </div>
+                        {/* <button onClick={PrintResume}>Download</button> */}
                     </div>
                     <hr />
                     <div className='mt-4 flex flex-auto gap-x-40'>
@@ -116,7 +126,12 @@ const Resume = () => {
                     </div>
                 </div>
             </div>
-            : null
+            :
+            <div className='min-h-screen flex items-center justify-center'>
+                <Link href={'/student/edit_resume'}>
+                    <button className='p-2 px-5 border rounded-md hover:shadow-lg hover:bg-black hover:text-white duration-300'>Create your Resume</button>
+                </Link>
+            </div>
         }
         </>
     );

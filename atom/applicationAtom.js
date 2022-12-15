@@ -16,3 +16,8 @@ export const isApplicationUpdatedState = atom({
 }) 
 
 
+export const userIdState = atom({
+  key : 'userIdStateKey',
+  default : null
+}) 
+
