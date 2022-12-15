@@ -7,7 +7,7 @@ import { useRecoilState } from 'recoil';
 import { loginState } from '../../atom/loginAtom';
 import Header from '../../components/Header';
 
-const employer = () => {
+const Employer = () => {
     // const [isLogin, setIsLogin] = useRecoilState(loginState)
 
     const emailRef = useRef();
@@ -22,7 +22,7 @@ const employer = () => {
         e.preventDefault();
         console.log(emailRef.current.value, passwordRef.current.value, fnameRef.current.value,
             lnameRef.current.value, contactRef.current.value)
-        axios.post("http://localhost:5000/company/signup", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/company/signup", {
             email: emailRef.current.value,
             password: passwordRef.current.value,
             Contact: contactRef.current.value,
@@ -128,4 +128,4 @@ const employer = () => {
     );
 }
 
-export default employer
+export default Employer

@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRef } from "react";
 import Header from "../components/Header";
-const letter = () => {
+const Letter = () => {
 
     const coverRef = useRef();
     const assRef = useRef();
@@ -10,7 +10,7 @@ const letter = () => {
     const createLetter = (e) => {
         e.preventDefaulit();
         console.log(coverRef.current.value, assRef.current.value)
-        axios.post("http://localhost:5000/application/createapp", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/application/createapp", {
             cover_letter: coverRef.current
         })
     }
@@ -82,5 +82,5 @@ const letter = () => {
 
 }
 
-export default letter
+export default Letter
 

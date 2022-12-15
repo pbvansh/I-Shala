@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Internship from "../components/Internship";
 const data = Array(10).fill(1)
 
-const internships = () => {
+const Internships = () => {
 
     const [intern, setIntern] = useState([]);
     const [location, setLocation] = useState('');
@@ -14,7 +14,7 @@ const internships = () => {
     const [stipend, setStipend] = useState('');
     const [type, setType] = useState('');
     // const [opations, setOpations] = useState({});
-    const [URL, setURL] = useState('http://localhost:5000/internship')
+    const [URL, setURL] = useState('https://I-Shalabackend.pratikvansh.repl.co/internship')
 
     useEffect(() => {
         axios.get(URL).then((res) => {
@@ -39,7 +39,7 @@ const internships = () => {
         if (category) {
             options += `category=${category}&`;
         }
-        setURL(`http://localhost:5000/internship?${options}`)
+        setURL(`https://I-Shalabackend.pratikvansh.repl.co/internship?${options}`)
     }
     return (
         <div className="bg-gray-50 min-h-screen ">
@@ -93,7 +93,7 @@ const internships = () => {
                         </div>
                     </div>
                     <button className="bg-gray-200 p-2 rounded-full border font-semibold hover:border-sky-600 hover:text-sky-600" onClick={setQuaryPrams}>Apply</button>
-                    <p onClick={() => setURL('http://localhost:5000/internship')} className="text-sky-500 hover:text-sky-600 font-semibold text-right cursor-pointer">Clear all</p>
+                    <p onClick={() => setURL('https://I-Shalabackend.pratikvansh.repl.co/internship')} className="text-sky-500 hover:text-sky-600 font-semibold text-right cursor-pointer">Clear all</p>
 
                 </div>
                 <section className="ml-10 space-y-5 mx-auto">
@@ -111,4 +111,4 @@ const internships = () => {
     );
 }
 
-export default internships
+export default Internships

@@ -18,7 +18,7 @@ const Personal_details = () => {
   const userDetail = (e) => {
     e.preventDefault();
        console.log(EmailRef.current.value,FnameRef.current.value,LnameRef.current.value,ContactRef.current.value)
-       axios.post("http://localhost:5000/employee/create",{
+       axios.post("https://I-Shalabackend.pratikvansh.repl.co/employee/create",{
         Email : EmailRef.current.value,
         FirstName : FnameRef.current.value,
         LastName :  LnameRef.current.value,

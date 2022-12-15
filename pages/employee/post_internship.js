@@ -6,7 +6,7 @@ import JWT from 'jsonwebtoken'
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
 
-const post_internship = () => {
+const Post_internship = () => {
 
     const [type,setType] = useState(null);
     const nameRef = useRef();
@@ -26,7 +26,7 @@ const post_internship = () => {
     const createInternship = (e) => {
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.post("http://localhost:5000/internship/create", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/internship/create", {
             company_id: token.id,
             Internship_Name: nameRef.current.value,
             Internship_type: type,
@@ -227,4 +227,4 @@ const post_internship = () => {
     )
 }
 
-export default post_internship
+export default Post_internship

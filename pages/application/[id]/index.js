@@ -15,7 +15,7 @@ const Letter = () => {
         console.log(coverRef.current.value, availibilityRef.current.value)
         const {id} = JWT.decode(localStorage.getItem('i_shala_token'))
         
-        axios.post("http://localhost:5000/application/createapp", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/application/createapp", {
             Internship_id: internshipID,
             user_id : id,
             cover_letter: coverRef.current.value,

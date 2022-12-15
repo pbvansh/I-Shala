@@ -13,7 +13,7 @@ const Applicants = ({ id }) => {
   const [showStatusModal, setshowStatusModal] = useState(false);
   const IsUpdated = useRecoilValue(isApplicationUpdatedState)
   useEffect(() => {
-    axios.get(`http://localhost:5000/company/${id}/applicants`).then((res) => {
+    axios.get(`https://I-Shalabackend.pratikvansh.repl.co/company/${id}/applicants`).then((res) => {
       setApplicants(res.data)
     })
   }, [IsUpdated])

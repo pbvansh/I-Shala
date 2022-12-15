@@ -6,7 +6,7 @@ import Home from "../components/Home"
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 
-const index = () => {
+const Index = () => {
     
      const route = useRouter();
      const [isEmp,setIsEmp] = useRecoilState(isEmpState);
@@ -36,4 +36,4 @@ const index = () => {
      );
 }
 
-export default index
+export default Index

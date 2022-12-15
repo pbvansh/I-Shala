@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Header from "./Header";
 
-const Application = ({ app }) => {
+const ApplicationComp = ({ app }) => {
     const [applicants,setApplicants] = useState(0)
     useEffect(()=>{
-        axios.get(`http://localhost:5000/application/${app.Internship_id._id}/totalApplicant`).then((res)=>{
+        axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${app.Internship_id._id}/totalApplicant`).then((res)=>{
          setApplicants(res.data)
         })
      },[])
@@ -62,4 +62,4 @@ const Application = ({ app }) => {
     );
 }
 
-export default Application
+export default ApplicationComp

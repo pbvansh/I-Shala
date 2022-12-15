@@ -134,8 +134,8 @@ const Body = () => {
                 <div className="space-y-16">
                     <div className="flex m-2 cursor-pointer ">
                         {
-                            cities.map((obj) => (
-                                <div className="p-3 hover:shadow-2xl">
+                            cities.map((obj,i) => (
+                                <div key={i} className="p-3 hover:shadow-2xl">
                                     <img src={obj.url} />
                                     <p className="text-center font-semibold hover:text-sky-700">{obj.Name}</p>
 
@@ -149,8 +149,8 @@ const Body = () => {
                     </div>
                     <div className="flex m-2 cursor-pointer">
                         {
-                            catagoires.map((ob) => (
-                                <div className="p-3 hover:shadow-2xl">
+                            catagoires.map((ob , i) => (
+                                <div key={i} className="p-3 hover:shadow-2xl">
                                     <img src={ob.Url} />
                                     <p className="text-center font-semibold hover:text-sky-700">{ob.cname}</p>
                                 </div>
@@ -161,8 +161,8 @@ const Body = () => {
                     {/* pics */}
                     <div className="flex m-2 cursor-pointer">
                         {
-                            pics.map((pic) => (
-                                <div className="p-3 hover:shadow-2xl">
+                            pics.map((pic , i) => (
+                                <div key={i} className="p-3 hover:shadow-2xl">
                                     <img src={pic.Urlp} />
                                     <p className="text-center font-semibold hover:text-sky-700">{pic.pname}</p>
 

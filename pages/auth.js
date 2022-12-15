@@ -25,7 +25,7 @@ const Auth = () => {
         e.preventDefault();
         console.log(emailRef.current.value, passwordRef.current.value, fnameRef.current.value,
             lnameRef.current.value, contactRef.current.value)
-        axios.post("http://localhost:5000/user/signup", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/user/signup", {
             email: emailRef.current.value,
             password: passwordRef.current.value,
             Contact: contactRef.current.value,
@@ -45,7 +45,7 @@ const Auth = () => {
 
         e.preventDefault();
         // console.log(LemailRef.current.value, LpasswordRef.current.value)
-        axios.post("http://localhost:5000/user/login", {
+        axios.post("https://I-Shalabackend.pratikvansh.repl.co/user/login", {
             email: LemailRef.current.value,
             password: LpasswordRef.current.value
         }).then((res) => {
