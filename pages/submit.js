@@ -9,8 +9,8 @@ const submit = () =>{
         <div className="min-h-screen max-w-screen-lg mx-auto mb-32 mt-24 border rounded-lg p-8 shadow-2xl">
             <Header title={"Submit"}/>
             <div className="max-w-screen-lg mx-auto border rounded-md p-8 bg-green-100 flex justify-evenly shadow-lg">
-           <img src="https://internshala.com/static/images/info/about_us/vision/trainings-r575.svg" height={100} width={100}
-            // https://internshala.com/static/images/info/about_us/vision/internships-r575.svg
+           <img src="https://internshala.com/static/images/common/modal_success.svg" height={100} width={100}
+            
             className="ml-12 justify-center" />
             <div>
                 <p className="text-gray-700 font-semibold text-4xl mt-6">Your application has been submitted!</p>
@@ -24,8 +24,8 @@ const submit = () =>{
             </div>
 
             <div>
-             <img src="https://blooming-bastion-29120.herokuapp.com/static/images/page_3rd_image.png"
-              height={500} width={500} className="ml-52 mt-10 "/>
+             <img src="submit page.PNG"
+              height={510} width={510} className="ml-52 mt-10 "/>
              </div>
         </div>
         </>
