@@ -2,6 +2,7 @@ import { QuestionMarkCircleIcon, DocumentReportIcon } from "@heroicons/react/out
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import JWT from "jsonwebtoken"
 import Header from "./Header";
 
 const ApplicationComp = ({ app }) => {
@@ -10,24 +11,31 @@ const ApplicationComp = ({ app }) => {
         axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${app.Internship_id._id}/totalApplicant`).then((res)=>{
          setApplicants(res.data)
         })
+        const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
+        axios.post(`https://I-Shalabackend.pratikvansh.repl.co/application/applied`,{
+            user_id : id,
+            Internship_id : app.Internship_id._id
+        }).then((res)=>{
+        console.log(res.data);
+        })
      },[])
 
      const getInfo = (state)=>{
         if(state=='Selected'){
-            return `congratulations you are selected for this role.please contact on this number or email \n. Email: ${app.Internship_id?.company_id?.email}.
+            return `congratulations you are selected for this role. please contact on this number or email \n. Email: ${app.Internship_id?.company_id?.email}.
             Contact : ${app.Internship_id?.company_id?.Contact}`
         }
         else if(state=='Applied'){
             return 'Applied successfully'
         }
         else if(state=='Seen'){
-            return 'Application seen by employer'
+            return 'Your Application is seen by employer'
         }
         else if(state=='Pending'){
-            return 'Your application pandding at employer'
+            return 'Your application is pendding now'
         }
         else if(state=='Not selected'){
-            return 'your are not selected for this role. Please applie on other internships'
+            return 'Your are not selected for this role. Please apply on other internships'
         }
         else{
             return 'more info'

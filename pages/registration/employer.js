@@ -45,7 +45,7 @@ const Employer = () => {
             <form className="min-h-screen relative " ref={formRef}
                 style={{
                     backgroundImage: "url('https://internshala.com/static/images/registration/employer/registration_new/internship/banner/r_1255_new.png')",
-                    backgroundRepeat: "no-repeat", backgroundSize: "1800px"
+                    backgroundRepeat: "no-repeat", backgroundSize: "1900px"
                 }}
             >
                 <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
