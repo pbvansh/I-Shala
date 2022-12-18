@@ -5,15 +5,22 @@ import { useEffect, useState } from 'react';
 import JWT from "jsonwebtoken"
 import Header from './Header';
 import axios from 'axios';
-const Resume = () => {
+const Resume = ({ user_id }) => {
     const [resume, setresume] = useState(null);
     useEffect(() => {
         const token = localStorage.getItem('i_shala_token')
         const user = JWT.decode(token)
-        axios.get('https://I-Shalabackend.pratikvansh.repl.co/resume/' + user.id).then((res) => {
-            console.log(res.data);
-            setresume(res.data[0]);
-        })
+        if (user_id) {
+            axios.get('https://I-Shalabackend.pratikvansh.repl.co/resume/' + user_id).then((res) => {
+                console.log(res.data);
+                setresume(res.data[0]);
+            })
+        } else {
+            axios.get('https://I-Shalabackend.pratikvansh.repl.co/resume/' + user.id).then((res) => {
+                console.log(res.data);
+                setresume(res.data[0]);
+            })
+        }
     }, [])
 
     // const PrintResume = () => {
@@ -138,3 +145,5 @@ const Resume = () => {
 }
 
 export default Resume
+
+

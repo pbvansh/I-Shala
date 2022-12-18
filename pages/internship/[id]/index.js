@@ -1,24 +1,34 @@
-import {CalendarIcon, ClipboardCheckIcon, ClockIcon, CurrencyRupeeIcon, HomeIcon, LocationMarkerIcon, PlayIcon, TrendingUpIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
+import { CalendarIcon, ClipboardCheckIcon, ClockIcon, CurrencyRupeeIcon, HomeIcon, LocationMarkerIcon, PlayIcon, TrendingUpIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
 // import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import JWT from 'jsonwebtoken'
 import { useRouter } from 'next/router';
 import Header from '../../../components/Header';
 
-const Index = ({ internship,totalApplicants}) => {
+const Index = ({ internship, totalApplicants }) => {
 
     const router = useRouter()
-
+    const [applied, setApplied] = useState(false)
     const id = router.query.id;
+
+    useEffect(() => {
+        const user = JWT.decode(localStorage.getItem('i_shala_token'))
+        axios.post('https://I-Shalabackend.pratikvansh.repl.co/application/applied', {
+            user_id: user.id,
+            Internship_id: id
+        }).then((res) => {
+            if (res.data.applied) setApplied(true)
+        })
+    }, [])
 
     const ApplyToInternship = (e) => {
         e.preventDefault();
         if (localStorage.getItem('i_shala_isAuth')) {
-            const {email} = JWT.decode(localStorage.getItem('i_shala_token'))
-            if(email == localStorage.getItem('i_shala_user_email')){
+            const { email } = JWT.decode(localStorage.getItem('i_shala_token'))
+            if (email == localStorage.getItem('i_shala_user_email')) {
                 router.push(`/resume?id=${id}`)
             }
             else {
@@ -31,7 +41,7 @@ const Index = ({ internship,totalApplicants}) => {
     // console.log(internship);
     return (
         <div>
-            <Header title={internship.Internship_Name}/>
+            <Header title={internship.Internship_Name} />
             <div className='p-8 justify-center text-center text-4xl mt-0'>
                 <p className=' font-semibold text-gray-800'>{internship.Internship_Name} Internship At {internship.company_id ? internship.company_id.Name : 'sp'}</p>
             </div>
@@ -104,7 +114,7 @@ const Index = ({ internship,totalApplicants}) => {
                                 <p className='text-gray-700 text-base font-semibold'>Activity on Internshala</p>
                             </div>
                             <div className='flex space-x-12'>
-                                <div className='flex space-x-1 text-md text-gray-600'> 
+                                <div className='flex space-x-1 text-md text-gray-600'>
                                     <CalendarIcon className='h-5 w-5 text-blue-500' />
                                     <p>Hiring since December 2019</p>
                                 </div>
@@ -126,7 +136,7 @@ const Index = ({ internship,totalApplicants}) => {
                         </div>
                         <div className='text-gray-600 font-normal'>
 
-                            <p  className='text-lg text-gray-600'>{internship.About_internship}</p>
+                            <p className='text-lg text-gray-600'>{internship.About_internship}</p>
 
                         </div>
                         <div>
@@ -143,7 +153,7 @@ const Index = ({ internship,totalApplicants}) => {
                             <p>2. can start the work from home job/internship between 8th Sep'22 and 13th Oct'22</p>
                             <p>3. are available for duration of 1 week</p>
                             <p>4. have relevant skills and interests</p> */}
-                           
+
                         </div>
 
                         <div className='space-y-1'>
@@ -175,8 +185,8 @@ const Index = ({ internship,totalApplicants}) => {
                                 pathname: '/resume',
                                 query : {id}
                             }}> */}
-                            <button onClick={ApplyToInternship} className='bg-sky-400 text-white font-semibold border rounded-md p-3 w-32 text-lg 
-                             cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto'>Apply now</button>
+                            <button onClick={ApplyToInternship} disabled={applied ? true : false} className={`bg-sky-400 text-white font-semibold border rounded-md p-3  text-lg 
+                             cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto`}>{`${applied ? 'Already applied' : 'Apply Now'}`}</button>
                             {/* </Link> */}
                         </div>
 
@@ -192,13 +202,13 @@ export default Index
 export async function getStaticProps(context) {
     const { id } = context.params;
     const res = await axios.get('https://I-Shalabackend.pratikvansh.repl.co/internship/' + id);
-    const {data} = await axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${id}/totalApplicant`)
+    const { data } = await axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${id}/totalApplicant`)
     const internship = res.data;
     return {
         props: {
             internship,
-            totalApplicants : data
-          
+            totalApplicants: data
+
         }
     }
 }

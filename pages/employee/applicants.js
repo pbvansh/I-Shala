@@ -15,6 +15,7 @@ const Applicants = ({ id }) => {
   useEffect(() => {
     axios.get(`https://I-Shalabackend.pratikvansh.repl.co/company/${id}/applicants`).then((res) => {
       setApplicants(res.data)
+      console.log(res.data);
     })
   }, [IsUpdated])
 

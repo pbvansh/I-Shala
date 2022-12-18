@@ -18,7 +18,7 @@ const Applicant = ({ cand, i, setshowStatusModal }) => {
             <p>{i + 1}</p>
             <p>{cand.user_id?.firstName}</p>
             <p>{cand.createdAt.split('T')[0]}</p>
-            <Link href={`/application/view/${cand?._id}`}>
+            <Link href={`/application/view/${cand?._id}?user_id=${cand.user_id._id}`}>
                 <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
             </Link>
             <p className="text-sky-500 bg-sky-50 font-semibold text-base border

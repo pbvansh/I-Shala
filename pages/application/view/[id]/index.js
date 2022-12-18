@@ -2,15 +2,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { PencilIcon } from "@heroicons/react/outline"
-import Link from "next/link";
 import Header from "../../../../components/Header";
 import ResumeComp from '../../../../components/ResumeComp'
 
-const Review = () => {
+const Review = ({user_id}) => {
     const route = useRouter();
     const id = route.query.id;
-
     const [app, setApp] = useState([])
 
     useEffect(() => {
@@ -46,16 +43,19 @@ const Review = () => {
 
 
                 {/* Resume */}
-                <ResumeComp/>
+                <ResumeComp user_id={user_id}/>
             </div>
-            {/* </div> */}
-
-
-            {/* </div> */}
-
         </>
     )
 
 }
 
 export default Review
+
+
+export function getServerSideProps(context) {
+    const user_id = (context.query?.user_id).toString();
+    return {
+      props: { user_id }
+    }
+  }
