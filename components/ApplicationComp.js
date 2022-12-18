@@ -6,45 +6,47 @@ import JWT from "jsonwebtoken"
 import Header from "./Header";
 
 const ApplicationComp = ({ app }) => {
-    const [applicants,setApplicants] = useState(0)
-    useEffect(()=>{
-        axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${app.Internship_id._id}/totalApplicant`).then((res)=>{
-         setApplicants(res.data)
+    const [applicants, setApplicants] = useState(0)
+    const [user_id, setUser_id] = useState(null)
+    useEffect(() => {
+        axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/${app.Internship_id._id}/totalApplicant`).then((res) => {
+            setApplicants(res.data)
         })
         const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.post(`https://I-Shalabackend.pratikvansh.repl.co/application/applied`,{
-            user_id : id,
-            Internship_id : app.Internship_id._id
-        }).then((res)=>{
-        console.log(res.data);
+        setUser_id(id)
+        axios.post(`https://I-Shalabackend.pratikvansh.repl.co/application/applied`, {
+            user_id: id,
+            Internship_id: app.Internship_id._id
+        }).then((res) => {
+            console.log(res.data);
         })
-     },[])
+    }, [])
 
-     const getInfo = (state)=>{
-        if(state=='Selected'){
+    const getInfo = (state) => {
+        if (state == 'Selected') {
             return `congratulations you are selected for this role. please contact on this number or email \n. Email: ${app.Internship_id?.company_id?.email}.
             Contact : ${app.Internship_id?.company_id?.Contact}`
         }
-        else if(state=='Applied'){
+        else if (state == 'Applied') {
             return 'Applied successfully'
         }
-        else if(state=='Seen'){
+        else if (state == 'Seen') {
             return 'Your Application is seen by employer'
         }
-        else if(state=='Pending'){
+        else if (state == 'Pending') {
             return 'Your application is pendding now'
         }
-        else if(state=='Not selected'){
+        else if (state == 'Not selected') {
             return 'Your are not selected for this role. Please apply on other internships'
         }
-        else{
+        else {
             return 'more info'
         }
-     }
+    }
     return (
         <>
             <div className="grid grid-cols-9 p-4">
-           
+
                 <p>{app.Internship_id?.company_id?.Name}</p>
                 <div className="flex flex-row col-span-2 justify-between pr-14">
                     <p>{app.Internship_id?.Internship_Name}</p>
@@ -62,7 +64,7 @@ const ApplicationComp = ({ app }) => {
                     <QuestionMarkCircleIcon className="h-5 w-5 text-sky-500 cursor-pointer peer" />
                     <span className="absolute text-sm invisible hover:visible peer-hover:visible rounded-md bg-black opacity-70 text-white z-10 border p-1 top-0 right-14">{getInfo(app.application_status)}</span>
                 </div>
-                <Link href={`../application/view/${app._id}`}>
+                <Link href={`../application/view/${app._id}?user_id=${user_id}`}>
                     <DocumentReportIcon className="h-6 w-6 text-sky-500 cursor-pointer hover:text-sky-600" />
                 </Link>
             </div>

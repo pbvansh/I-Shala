@@ -7,13 +7,12 @@ import ApplicationComp from "../../components/ApplicationComp";
 
 const Application = () => {
 
-    const [app, setapp] = useState([]);
+    const [app,setApp] = useState([]);
 
     useEffect(() => {
         const { id } = JWT.decode(localStorage.getItem('i_shala_token'))
         axios.get("https://I-Shalabackend.pratikvansh.repl.co/application/app/" + id).then((res) => {
-            setapp(res.data);
-            console.log(res.data);
+            setApp(res.data);
         }).catch((ex) => {
             console.log(ex)
         })

@@ -5,10 +5,12 @@ import { useRef, useState } from "react";
 import JWT from 'jsonwebtoken'
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
+import notify from "../../atom/notify";
 
 const Post_internship = () => {
 
-    const [type,setType] = useState(null);
+    const [type, setType] = useState(null);
+    const [valid, setValid] = useState(true);
     const nameRef = useRef();
     const locationRef = useRef();
     const noofOpeningsRef = useRef();
@@ -23,28 +25,60 @@ const Post_internship = () => {
     const whoRef = useRef();
     const formRef = useRef();
     const route = useRouter()
+
+
+    function isInTheFuture(date) {
+        const today = new Date();
+
+        return date > today;
+    }
+
     const createInternship = (e) => {
         e.preventDefault();
-        const token = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.post("https://I-Shalabackend.pratikvansh.repl.co/internship/create", {
-            company_id: token.id,
-            Internship_Name: nameRef.current.value,
-            Internship_type: type,
-            Location: locationRef.current.value,
-            Duration: durationRef.current.value,
-            start_date: startRef.current.value,
-            Stipend: stipendRef.current.value,
-            RequiredSkills: skillsRef.current.value,
-            whocanapply: whoRef.current.value,
-            perks: perksRef.current.value,
-            About_internship: aboutInternshipRef.current.value,
-            Additional_information: addinfoRef.current.value,
-            NoOfOpening: noofOpeningsRef.current.value
-        }).then((res) => {
-            route.push("/employee/internship_created")
-        })
-        console.log(type);
-        formRef.current.reset()
+        setValid(true)
+        const pn = /^[1-9]\d*$/;
+        const vd = isInTheFuture(new Date(startRef.current.value))
+
+        if(nameRef.current.value && type.length >0 && locationRef.current.value && noofOpeningsRef.current.value && startRef.current.value && durationRef.current.value && responsibilityRef.current.value && aboutInternshipRef.current.value && stipendRef.current.value && perksRef.current.value && skillsRef.current.value && addinfoRef.current.value && whoRef.current.value){
+        }else{
+            setValid(false)
+            notify('warning', 'Please enter all details');
+            return;
+        }
+        if (!vd) {
+            setValid(false)
+            notify('warning', 'Please enter future date');
+        }
+        if (!noofOpeningsRef.current.value.match(pn)) {
+            setValid(false)
+            notify('warning', 'Please enter valid opening number');
+        }
+        if(!stipendRef.current.value.match(pn)){
+            setValid(false)
+            notify('warning', 'Please enter valid amount');
+        }
+        if (valid) {
+            console.log('valid');
+            const token = JWT.decode(localStorage.getItem('i_shala_token'))
+            axios.post("https://I-Shalabackend.pratikvansh.repl.co/internship/create", {
+                company_id: token.id,
+                Internship_Name: nameRef.current.value,
+                Internship_type: type,
+                Location: locationRef.current.value,
+                Duration: durationRef.current.value,
+                start_date: startRef.current.value,
+                Stipend: stipendRef.current.value,
+                RequiredSkills: skillsRef.current.value,
+                whocanapply: whoRef.current.value,
+                perks: perksRef.current.value,
+                About_internship: aboutInternshipRef.current.value,
+                Additional_information: addinfoRef.current.value,
+                NoOfOpening: noofOpeningsRef.current.value
+            }).then((res) => {
+                route.push("/employee/internship_created")
+            })
+            formRef.current.reset()
+        }
     }
 
 
@@ -52,7 +86,7 @@ const Post_internship = () => {
     return (
         <>
             <div className="min-h-screen max-w-4xl mx-auto relative justify-center">
-                <Header title={'Post Internship'}/>
+                <Header title={'Post Internship'} />
                 <div className="flex space-x-40 justify-center p-20">
                     <div className="flex flex-col justify-center items-center font-semibold hover:text-sky-500 text-gray-800">
                         <Link href="/employee/personal_details">
@@ -82,58 +116,58 @@ const Post_internship = () => {
                     <p className="text-gray-700 font-semibold text-lg  ml-40 mt-4">Internship details</p>
                     <div className="border rounded-md border-gray-300 max-w-xl mx-auto p-5 space-y-3 mt-2 text-gray-700 font-semibold">
                         <div className="space-y-1">
-                            <lable>Profile(Internship name)</lable>
+                            <lable>Profile(Internship name)<span className="text-red-500">*</span></lable>
                             <input type="text" ref={nameRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
                         </div>
 
                         <div className="space-y-1">
-                            <lable>Internship type</lable>
+                            <lable>Internship type*</lable>
                             {/* <input type="text" ref={typeRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input> */}
                         </div>
 
                         <div className="text-gray-700 flex space-x-10 border border-gray-300 p-2 rounded-md text-center">
                             <div className="space-x-1">
-                                <input type="radio" name="type" value="work_from_home" onChange={(e)=>setType(e.target.value)}/>
+                                <input type="radio" name="type" value="work_from_home" onChange={(e) => setType(e.target.value)} />
                                 <lable>work from home</lable>
                             </div>
                             <div className="space-x-1">
-                                <input type="radio" name="type" value="In-office"  onChange={(e)=>setType(e.target.value)}/>
+                                <input type="radio" name="type" value="In-office" onChange={(e) => setType(e.target.value)} />
                                 <lable>In-office</lable>
                             </div>
                             <div className="space-x-1">
-                                <input type="radio" name="type" value="part-time"  onChange={(e)=>setType(e.target.value)}/>
+                                <input type="radio" name="type" value="part-time" onChange={(e) => setType(e.target.value)} />
                                 <lable>part-time</lable>
                             </div>
                         </div>
 
                         <div className="space-y-1">
-                            <lable>City/Cities</lable>
+                            <lable>City/Cities<span className="text-red-500">*</span></lable>
                             <input type="text" ref={locationRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
                         </div>
 
                         <div className="space-y-1">
-                            <lable>Number of openings</lable>
-                            <input type="text" ref={noofOpeningsRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                            <lable>Number of openings<span className="text-red-500">*</span></lable>
+                            <input type="number" min="1" ref={noofOpeningsRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
                         </div>
 
                         <div className="space-y-1">
-                            <lable>Internship start date</lable>
-                            <input type="text" ref={startRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                            <lable>Internship start date<span className="text-red-500">*</span></lable>
+                            <input type="date" ref={startRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
                         </div>
 
                         <div className="space-y-1">
-                            <lable>Internship duration</lable>
-                            <input type="text" ref={durationRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
+                            <lable>Internship duration<span className="text-red-500">*</span></lable>
+                            <input type="text" ref={durationRef} placeholder='ex. 6 moths' className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full"></input>
                         </div>
 
                         <div className="space-y-1">
-                            <label>About Internship</label>
+                            <label>About Internship<span className="text-red-500">*</span></label>
                             <textarea type="text" ref={aboutInternshipRef} className="border rounded-md
                          border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-1" />
                         </div>
 
                         <div className="space-y-1">
-                            <label>Intern’s responsibilities</label>
+                            <label>Intern’s responsibilities<span className="text-red-500">*</span></label>
                             <textarea type="text" ref={responsibilityRef} placeholder="Selected intern's day-to-day responsibilities include:" className="border rounded-md
                          border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-1" />
                         </div>
@@ -143,12 +177,12 @@ const Post_internship = () => {
                     <p className="text-lg font-semibold text-gray-700 ml-40 mt-10">Stipend and Perks</p>
                     <div className="border rounded-md border-gray-300 max-w-xl mx-auto mt-2 mb-5 p-5 space-y-3 text-gray-700 font-semibold">
                         <div className="space-y-1">
-                            <label>Stipend</label>
-                            <input type="text" ref={stipendRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full" />
+                            <label>Stipend<span className="text-red-500">*</span></label>
+                            <input type="number" min={0} ref={stipendRef} className="outline-none border border-gray-300 rounded-md p-2 block hover:border-sky-500 w-full" />
                         </div>
 
                         <div className="space-y-1">
-                            <p >Perks</p>
+                            <p >Perks<span className="text-red-500">*</span></p>
                             <textarea type="text" ref={perksRef} className="border rounded-md
                       border-gray-300 hover:border-sky-500 outline-none block w-full h-16 p-2" />
                         </div>
@@ -159,17 +193,17 @@ const Post_internship = () => {
                     <div className="border rounded-md border-gray-300 max-w-xl mx-auto mt-2 mb-5 text-gray-700 font-semibold">
                         <div className="p-5 space-y-3">
                             <div className="space-y-1">
-                                <p>Skills required</p>
+                                <p>Skills required<span className="text-red-500">*</span></p>
                                 <textarea type="text" ref={skillsRef} placeholder="e.g. Javascript , Java" className="border rounded-md
                  border-gray-300 hover:border-sky-500 outline-none block w-full h-16 p-2" />
                             </div>
 
                             <div className="space-y-1">
-                                <p>Who can apply</p>
+                                <p>Who can apply<span className="text-red-500">*</span></p>
                                 <textarea type="text" ref={whoRef} placeholder="dtgdt" className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-32 p-2" />
                             </div>
                             <div className="space-y-1">
-                                <p>Additional Information</p>
+                                <p>Additional Information<span className="text-red-500">*</span></p>
                                 <textarea type="text" ref={addinfoRef} className="border rounded-md border-gray-300 hover:border-sky-500 outline-none block w-full h-24 p-2" />
                             </div>
                         </div>

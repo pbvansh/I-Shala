@@ -108,19 +108,12 @@ const Login = () =>{
                         <p className="text-sm font-semibold cursor-pointer text-sky-500 hover:text-sky-600">Forgot password?</p>
 
                         <button onClick={Login} className="bg-sky-500 text-xl font-semibold text-white border rounded-md  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg">Login</button>
-
-
-
-
                         <p>New to Internshala?
                             <Link href='/auth'>
                             <span className="p-2 font-semibold text-sky-500 hover:text-sky-600 cursor-pointer bg-gray-50">Register</span>
                             </Link>
                             </p>
-
                     </form> 
-
-
                     </div>
 
 

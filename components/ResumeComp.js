@@ -45,9 +45,14 @@ const Resume = ({ user_id }) => {
                     <div className='space-y-1 mb-5'>
                         <div className='flex space-x-2'>
                             <p className="text-4xl text-gray-700 font-semibold">{resume.Fname} {resume.Lname}</p>
-                            <Link href={'/student/edit_resume'}>
-                                <PencilIcon className='h-7 w-7 cursor-pointer' />
-                            </Link>
+                            {
+                                !user_id ?
+                                    <Link href={'/student/edit_resume'}>
+                                        <PencilIcon className='h-7 w-7 cursor-pointer' />
+                                    </Link>
+                                    : null
+                            }
+
                         </div>
                         <div className='text-gray-500 font-semibold text-sm'>
                             <p>{resume.email}</p>

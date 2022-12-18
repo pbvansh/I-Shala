@@ -13,7 +13,6 @@ const Review = ({user_id}) => {
     useEffect(() => {
         axios.get(`https://I-Shalabackend.pratikvansh.repl.co/application/cov/${id}`).then((res) => {
             setApp(res.data);
-            console.log(res.data);
         }).catch((ex) => {
             console.log(ex)
         })
@@ -54,7 +53,7 @@ export default Review
 
 
 export function getServerSideProps(context) {
-    const user_id = (context.query?.user_id).toString();
+    const user_id = (context?.query?.user_id).toString();
     return {
       props: { user_id }
     }

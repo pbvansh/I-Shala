@@ -177,12 +177,6 @@ const Auth = () => {
                                 <p>New to Internshala?<span className="p-2 font-semibold text-sky-500 hover:text-sky-600 cursor-pointer bg-gray-50" onClick={() => setLoginSignup(true)}>Register</span></p>
 
                             </div>
-
-
-
-
-
-
                     }  </div>
 
             </form>

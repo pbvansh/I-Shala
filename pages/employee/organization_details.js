@@ -1,25 +1,37 @@
 
 import { DocumentDuplicateIcon, DocumentTextIcon, UsersIcon } from "@heroicons/react/outline"
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Router, { useRouter } from "next/router";
 import axios from "axios";
 import JWT from 'jsonwebtoken'
 import Header from "../../components/Header";
+import notify from "../../atom/notify";
 const Organization_details = () => {
-    const orgnameRef = useRef();
-    const orgdetailRef = useRef();
-    const urlRef = useRef();
+    const [orgname, setorgname] = useState()
+    const [orgdetail, setoegdetail] = useState()
+    const [url, seturl] = useState()
+
+    useEffect(() => {
+        const { id } = JWT.decode(localStorage.getItem('i_shala_token'));
+        axios.get(`https://I-Shalabackend.pratikvansh.repl.co/company/${id}`).then((res) => {
+            if (res.data) {
+                setorgname(res.data.Name)
+                setoegdetail(res.data.About_company)
+                seturl(res.data.URL)
+            }
+        })
+    }, [])
 
     const orgDetail = (e) => {
         e.preventDefault();
         const token = JWT.decode(localStorage.getItem('i_shala_token'))
         axios.put(`https://I-Shalabackend.pratikvansh.repl.co/company/${token.id}/update`, {
-            Name: orgnameRef.current.value,
-            About_company: orgdetailRef.current.value,
-            // website_URL: urlRef.current.value
+            Name: orgname,
+            About_company: orgdetail,
+            URL: url
         }).then((res) => {
-            console.log(res.data)
+            notify('success', 'organization details saved successfully')
         })
         Router.push("/employee/post_internship")
     }
@@ -54,7 +66,7 @@ const Organization_details = () => {
                 <div className=" border border-gray-300 rounded-md mt-5 p-7 max-w-3xl mx-auto">
                     <div className="space-y-1">
                         <label className="font-semibold text-gray-700">Organization name</label>
-                        <input type="text" ref={orgnameRef} className="outline-none hover:border-sky-500 border border-gray-300 rounded-md block p-[6px] w-full"></input>
+                        <input type="text" defaultValue={orgname} onChange={(e) => setorgname(e.target.value)} className="outline-none hover:border-sky-500 border border-gray-300 rounded-md block p-[6px] w-full"></input>
                     </div>
                     <div className="flex space-x-2 mt-3">
                         <input type="checkbox" className="h-4 w-4 mt-1 cursor-pointer"></input>
@@ -63,7 +75,7 @@ const Organization_details = () => {
 
                     <div className="mt-3 space-y-1">
                         <p className="text-gray-700 font-semibold">Organization description</p>
-                        <textarea ref={orgdetailRef} className="outline-none hover:border-sky-500 border rounded-md
+                        <textarea defaultValue={orgdetail} onChange={(e) => setoegdetail(e.target.value)} className="outline-none hover:border-sky-500 border rounded-md
                          border-gray-300 w-full p-5"></textarea>
                     </div>
                 </div>
@@ -77,7 +89,7 @@ const Organization_details = () => {
                         <p className="text-gray-600 p-1 font-semibold">Verify using your active & functional website</p>
                         <div className="space-y-1 p-2">
                             <p className="text-gray-700 font-semibold">Enter website URL</p>
-                            <input ref={urlRef} type="text" className="outline-none hover:border-sky-500 border border-gray-300 rounded-md p-[6px] w-full"></input>
+                            <input type="text" defaultValue={url} onChange={(e) => seturl(e.target.value)} className="outline-none hover:border-sky-500 border border-gray-300 rounded-md p-[6px] w-full"></input>
                         </div>
 
                     </div>
