@@ -12,16 +12,21 @@ const Index = ({ internship, totalApplicants }) => {
 
     const router = useRouter()
     const [applied, setApplied] = useState(false)
+    const [token, setToken] = useState(false)
     const id = router.query.id;
 
     useEffect(() => {
         const user = JWT.decode(localStorage.getItem('i_shala_token'))
-        axios.post('https://I-Shalabackend.pratikvansh.repl.co/application/applied', {
-            user_id: user.id,
-            Internship_id: id
-        }).then((res) => {
-            if (res.data.applied) setApplied(true)
-        })
+        if (user) {
+            setToken(true);
+            axios.post('https://I-Shalabackend.pratikvansh.repl.co/application/applied', {
+                user_id: user.id,
+                Internship_id: id
+            }).then((res) => {
+                if (res.data.applied) setApplied(true)
+            })
+        }
+
     }, [])
 
     const ApplyToInternship = (e) => {
@@ -185,8 +190,17 @@ const Index = ({ internship, totalApplicants }) => {
                                 pathname: '/resume',
                                 query : {id}
                             }}> */}
-                            <button onClick={ApplyToInternship} disabled={applied ? true : false} className={`bg-sky-400 text-white font-semibold border rounded-md p-3  text-lg 
+                            {
+                                token ?
+                                    <button onClick={ApplyToInternship} disabled={applied || !token ? true : false} className={`bg-sky-400 text-white font-semibold border rounded-md p-3  text-lg 
                              cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto`}>{`${applied ? 'Already applied' : 'Apply Now'}`}</button>
+                                    :
+                                    <Link href={'/login'}>
+                                        <button onClick={ApplyToInternship} className={`bg-sky-400 text-white font-semibold border rounded-md p-3  text-lg 
+                             cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto`}>Login You Account</button>
+                                    </Link>
+                            }
+
                             {/* </Link> */}
                         </div>
 

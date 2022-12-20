@@ -2,9 +2,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react'
-import { toast } from 'react-toastify';
-import { useRecoilState } from 'recoil';
-import { loginState } from '../../atom/loginAtom';
+import notify from '../../atom/notify';
 import Header from '../../components/Header';
 
 const Employer = () => {
@@ -15,28 +13,54 @@ const Employer = () => {
     const fnameRef = useRef();
     const lnameRef = useRef();
     const contactRef = useRef();
-    const formRef = useRef();  
-    const route = useRouter()
+    const formRef = useRef();
+    const route = useRouter();
+    const [valid, setValid] = useState(true);
 
     const userReg = (e) => {
+        setValid(true);
         e.preventDefault();
-        console.log(emailRef.current.value, passwordRef.current.value, fnameRef.current.value,
-            lnameRef.current.value, contactRef.current.value)
-        axios.post("https://I-Shalabackend.pratikvansh.repl.co/company/signup", {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-            Contact: contactRef.current.value,
-            First_name: fnameRef.current.value,
-            Last_name: lnameRef.current.value
+        const ev = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        const mv = /^([789]{1})([\d]{3})[(\D\s)]?[\d]{3}[(\D\s)]?[\d]{3}$/
+        if (emailRef.current.value && passwordRef.current.value && contactRef.current.value && fnameRef.current.value && lnameRef.current.value) { } else {
+            setValid(false)
+            notify('warning', 'Please enter all details');
+            return;
+        }
+        if (!emailRef.current.value.match(ev)) {
+            setValid(false)
+            notify('warning', 'Please enter valid email');
+        }
+        if (!contactRef.current.value.match(mv)) {
+            setValid(false)
+            notify('warning', 'Please enter valid mobile number');
+        }
+        const isValid = passwordRef.current.value.search(/^[A-Za-z0-9@_]{6,20}$/);
+        if (isValid != 0) {
+            setValid(false)
+            notify('warning', "Please enter strong Password");
+        } else if (passwordRef.current.value.length < 6) {
+            setValid(false)
+            toast.warning("warning", "you have to enter at least 6 digit!");
+        }
+        if (valid) {
+            axios.post("https://I-Shalabackend.pratikvansh.repl.co/company/signup", {
+                email: emailRef.current.value,
+                password: passwordRef.current.value,
+                Contact: contactRef.current.value,
+                First_name: fnameRef.current.value,
+                Last_name: lnameRef.current.value
 
-        }).then((res) => {
-            console.log(res.data)
-            toast("Signup Successfull", { autoClose: 1500, position: "bottom-right" })
-            route.push("/login")
-            // setLoginSignup(false)
-        })
+            }).then((res) => {
+                console.log(res.data)
+                notify("success", "Signup Successfull")
+                route.push("/login")
+            }).catch((e)=>{
+                console.log(e);
+            })
+            formRef.current.reset();
+        }
 
-        formRef.current.reset();
     }
 
     return (
@@ -49,14 +73,14 @@ const Employer = () => {
                 }}
             >
                 <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
-                    <Header title={'Register as employee'}/>
+                    <Header title={'Register as employee'} />
                     <div>
                         <p className="font-bold text-4xl flex">
                             <span className="relative">
                                 <img src="https://internshala.com/static/images/registration/employer/registration_new/internship/heading/r_1920.svg" />
                                 {/* <span className="absolute z-10 top-0 right-3 text-white">Free</span> */}
                             </span>
-                            </p>
+                        </p>
                         {/* <div className="justify-between space-y-3 text-4xl">
                             <p className="font-semibold text-2xl p-4 text-gray-700">Register and apply to 10000+ opportunities</p>
 
@@ -109,14 +133,14 @@ const Employer = () => {
 
                         </div>
                         <div className="flex justify-center">
-                           
+
                             <p>Already registered?
                                 <Link href="/login">
-                                <span className="p-2 font-semibold text-sky-500 cursor-pointer hover:text-sky-600">
-                                    Login
-                                </span>
+                                    <span className="p-2 font-semibold text-sky-500 cursor-pointer hover:text-sky-600">
+                                        Login
+                                    </span>
                                 </Link>
-                                </p>
+                            </p>
                         </div>
                     </div>
 

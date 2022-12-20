@@ -36,7 +36,7 @@ const Post_internship = () => {
     const createInternship = (e) => {
         e.preventDefault();
         setValid(true)
-        const pn = /^[1-9]\d*$/;
+        const pn = /^[0-9]*[1-9]+[0-9]*$/;
         const vd = isInTheFuture(new Date(startRef.current.value))
 
         if(nameRef.current.value && type.length >0 && locationRef.current.value && noofOpeningsRef.current.value && startRef.current.value && durationRef.current.value && responsibilityRef.current.value && aboutInternshipRef.current.value && stipendRef.current.value && perksRef.current.value && skillsRef.current.value && addinfoRef.current.value && whoRef.current.value){
