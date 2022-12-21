@@ -58,7 +58,7 @@ const Login = () =>{
     style={{ backgroundImage: "url('backg.jpg')", backgroundRepeat: "no-repeat",backgroundSize:"1600px"}}
 >
 
-     <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
+     <div className="max-w-screen-2xl mx-auto p-10 flex justify-around ml-16">
         <Header title={'Login Student | Employee'}/>
                     <div className="space-y-7">
                         <p className="font-bold text-4xl flex text-gray-700 ">Let&apos;s Login in I-Shala</p>
@@ -103,9 +103,9 @@ const Login = () =>{
                         </div>
                         <div className="space-y-1">
                             <label className="block font-semibold">Password</label>
-                            <input type='password'  ref={LpasswordRef} placeholder="must be atleast 6 characters" className="shadow-md outline-none p-[6px] border rounded-sm border-gray-300 hover:border-sky-500 w-full " />
+                            <input type='password'  ref={LpasswordRef} placeholder="vidhirana123@" className="shadow-md outline-none p-[6px] border rounded-sm border-gray-300 hover:border-sky-500 w-full " />
                         </div>
-                        <p className="text-sm font-semibold cursor-pointer text-sky-500 hover:text-sky-600">Forgot password?</p>
+                        {/* <p className="text-sm font-semibold cursor-pointer text-sky-500 hover:text-sky-600">Forgot password?</p> */}
 
                         <button onClick={Login} className="bg-sky-500 text-xl font-semibold text-white border rounded-md  cursor-pointer w-full p-2 hover:bg-sky-600 shadow-lg">Login</button>
                         <p>New to Internshala?

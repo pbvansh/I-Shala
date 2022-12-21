@@ -69,7 +69,7 @@ const Employer = () => {
             <form className="min-h-screen relative " ref={formRef}
                 style={{
                     backgroundImage: "url('https://internshala.com/static/images/registration/employer/registration_new/internship/banner/r_1255_new.png')",
-                    backgroundRepeat: "no-repeat", backgroundSize: "1900px"
+                    backgroundRepeat: "no-repeat", backgroundSize: "1700px"
                 }}
             >
                 <div className="max-w-screen-2xl mx-auto p-10 flex justify-around">
@@ -77,7 +77,7 @@ const Employer = () => {
                     <div>
                         <p className="font-bold text-4xl flex">
                             <span className="relative">
-                                <img src="https://internshala.com/static/images/registration/employer/registration_new/internship/heading/r_1920.svg" />
+                                <img src="https://internshala.com/static/images/registration/employer/registration_new/internship/heading/r_1920.svg" className='ml-24' />
                                 {/* <span className="absolute z-10 top-0 right-3 text-white">Free</span> */}
                             </span>
                         </p>

@@ -197,7 +197,7 @@ const Index = ({ internship, totalApplicants }) => {
                                     :
                                     <Link href={'/login'}>
                                         <button onClick={ApplyToInternship} className={`bg-sky-400 text-white font-semibold border rounded-md p-3  text-lg 
-                             cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto`}>Login You Account</button>
+                             cursor-pointer hover:bg-sky-500 shadow-lg text-center mx-auto`}>First Login in your account</button>
                                     </Link>
                             }
 

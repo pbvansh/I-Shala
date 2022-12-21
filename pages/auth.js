@@ -46,7 +46,7 @@ const Auth = () => {
         if (isValid != 0) {
             setValid(false)
             notify('warning', "Please enter strong Password");
-        } else if (passwordRef.current.value.length < 6) {
+        } else if (passwordRef.current.value.length > 6) {
             setValid(false)
             toast.warning("warning", "you have to enter at least 6 digit!");
         }
