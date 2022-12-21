@@ -22,7 +22,7 @@ const Auth = () => {
     const contactRef = useRef();
     const formRef = useRef();
     const route = useRouter()
-    const [valid, setValid] = useState(true);
+    const [valid, setValid] = useState(false);
 
     const userReg = (e) => {
         e.preventDefault();
@@ -46,7 +46,7 @@ const Auth = () => {
         if (isValid != 0) {
             setValid(false)
             notify('warning', "Please enter strong Password");
-        } else if (passwordRef.current.value.length > 6) {
+        } else if (passwordRef.current.value.length < 6) {
             setValid(false)
             toast.warning("warning", "you have to enter at least 6 digit!");
         }
@@ -67,8 +67,6 @@ const Auth = () => {
                 console.log(e);
                 notify('error', "email is already registered");
             })
-
-            
         }
 
     }

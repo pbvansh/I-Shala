@@ -15,7 +15,7 @@ const Employer = () => {
     const contactRef = useRef();
     const formRef = useRef();
     const route = useRouter();
-    const [valid, setValid] = useState(true);
+    const [valid, setValid] = useState(false);
 
     const userReg = (e) => {
         setValid(true);
@@ -53,12 +53,13 @@ const Employer = () => {
 
             }).then((res) => {
                 console.log(res.data)
-                notify("success", "Signup Successfull")
+                notify("success", "Signup Successfull");
+                formRef.current.reset();
                 route.push("/login")
             }).catch((e)=>{
                 console.log(e);
+                setValid(false)
             })
-            formRef.current.reset();
         }
 
     }
