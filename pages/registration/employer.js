@@ -52,6 +52,7 @@ const Employer = () => {
                 route.push("/login")
             }).catch((e)=>{
                 console.log(e);
+                notify('error', "email is already registered");
             })
         }
 
