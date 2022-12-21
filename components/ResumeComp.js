@@ -99,7 +99,7 @@ const Resume = ({ user_id }) => {
                         <p className='text-gray-500 font-semibold'>SKILLS</p>
                         <div className='grid grid-cols-3 justify-evenly w-full'>
                             {
-                                resume.skills.split(',').map((s, i) => (
+                                resume?.skills?.split(',').map((s, i) => (
                                     <p key={i} className='text-gray-800 font-semibold border m-2 p-2 rounded-md text-center hover:shadow-lg hover:scale-105 duration-300 cursor-pointer'>{s}</p>
                                 ))
                             }
@@ -111,7 +111,7 @@ const Resume = ({ user_id }) => {
                         <p className='text-gray-500 font-semibold'>WORK SAMPLES</p>
                         <div>
                             {
-                                resume.Portfolio_or_works.split(',').map((w, i) => (
+                                resume?.Portfolio_or_works?.split(',').map((w, i) => (
                                     <a key={i} href={w} className='text-sky-500 hover:text-sky-600 font-semibold block m-1'>{w}</a>
                                 ))
                             }
@@ -124,7 +124,7 @@ const Resume = ({ user_id }) => {
                         <div>
 
                             {
-                                resume.certificate.split(',').map((c, i) => (
+                                resume?.certificate.split(',').map((c, i) => (
                                     <a key={i} href={c} className='text-sky-500 hover:text-sky-600 font-semibold block m-1'>{c}</a>
                                 ))
                             }
@@ -134,7 +134,7 @@ const Resume = ({ user_id }) => {
                     <hr className='mt-7'></hr>
                     <div className='flex gap-x-36 mt-7'>
                         <p className='text-gray-500 font-semibold'>ACCOMPLISHMENTS</p>
-                        <p>{resume.Accomplishments}</p>
+                        <p>{resume?.Accomplishments}</p>
                     </div>
                 </div>
             </div>

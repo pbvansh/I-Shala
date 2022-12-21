@@ -38,7 +38,7 @@ const Auth = () => {
             setValid(false)
             notify('warning', 'Please enter valid email');
         }
-        if (!contactRef.current.value.match(mv)) {
+       if (!contactRef.current.value.match(mv)) {
             setValid(false)
             notify('warning', 'Please enter valid mobile number');
         }

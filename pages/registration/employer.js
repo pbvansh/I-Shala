@@ -15,7 +15,7 @@ const Employer = () => {
     const contactRef = useRef();
     const formRef = useRef();
     const route = useRouter();
-    const [valid, setValid] = useState(false);
+    const [valid, setValid] = useState(true);
 
     const userReg = (e) => {
         setValid(true);
