@@ -15,35 +15,29 @@ const Employer = () => {
     const contactRef = useRef();
     const formRef = useRef();
     const route = useRouter();
-    const [valid, setValid] = useState(true);
 
     const userReg = (e) => {
-        setValid(true);
         e.preventDefault();
         const ev = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         const mv = /^([789]{1})([\d]{3})[(\D\s)]?[\d]{3}[(\D\s)]?[\d]{3}$/
         if (emailRef.current.value && passwordRef.current.value && contactRef.current.value && fnameRef.current.value && lnameRef.current.value) { } else {
-            setValid(false)
             notify('warning', 'Please enter all details');
             return;
         }
+        const isValid = passwordRef.current.value.search(/^[A-Za-z0-9@_]{6,20}$/);
         if (!emailRef.current.value.match(ev)) {
-            setValid(false)
             notify('warning', 'Please enter valid email');
         }
-        if (!contactRef.current.value.match(mv)) {
-            setValid(false)
+       else if (!contactRef.current.value.match(mv)) {
             notify('warning', 'Please enter valid mobile number');
         }
-        const isValid = passwordRef.current.value.search(/^[A-Za-z0-9@_]{6,20}$/);
-        if (isValid != 0) {
-            setValid(false)
+        else if (isValid != 0) {
             notify('warning', "Please enter strong Password");
         } else if (passwordRef.current.value.length < 6) {
-            setValid(false)
             toast.warning("warning", "you have to enter at least 6 digit!");
         }
-        if (valid) {
+        else  {
+            console.log('hiii');
             axios.post("https://I-Shalabackend.pratikvansh.repl.co/company/signup", {
                 email: emailRef.current.value,
                 password: passwordRef.current.value,
@@ -58,7 +52,6 @@ const Employer = () => {
                 route.push("/login")
             }).catch((e)=>{
                 console.log(e);
-                setValid(false)
             })
         }
 
