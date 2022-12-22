@@ -88,6 +88,7 @@ const Internships = () => {
                             <span>6k</span>
                             <span>7k</span>
                             <span>8k</span>
+                            <span>9k</span>
                             <span>10k</span>
                         </div>
                     </div>
